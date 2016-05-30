@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ai.runner.center.charge.dao.mapper.interfaces.PayCenterLogStateMapper" >
+  <resultMap id="BaseResultMap" type="com.ai.runner.center.charge.dao.mapper.bo.PayCenterLogState" >
+    <result column="tenant_id" property="tenantId" jdbcType="VARCHAR" />
+    <result column="pay_id" property="payId" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="ori_order_id" property="oriOrderId" jdbcType="BIGINT" />
+    <result column="order_name" property="orderName" jdbcType="VARCHAR" />
+    <result column="request_source" property="requestSource" jdbcType="VARCHAR" />
+    <result column="pay_request_type" property="payRequestType" jdbcType="INTEGER" />
+    <result column="pay_channel" property="payChannel" jdbcType="INTEGER" />
+    <result column="pay_amount" property="payAmount" jdbcType="BIGINT" />
+    <result column="ord_des" property="ordDes" jdbcType="VARCHAR" />
+    <result column="buyer_email" property="buyerEmail" jdbcType="VARCHAR" />
+    <result column="return_email" property="returnEmail" jdbcType="VARCHAR" />
+    <result column="draw_email" property="drawEmail" jdbcType="VARCHAR" />
+    <result column="service_num" property="serviceNum" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="pay_method" property="payMethod" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="last_status_date" property="lastStatusDate" jdbcType="TIMESTAMP" />
+    <result column="pay_org_id" property="payOrgId" jdbcType="VARCHAR" />
+    <result column="pay_org_serial" property="payOrgSerial" jdbcType="VARCHAR" />
+    <result column="check_status" property="checkStatus" jdbcType="INTEGER" />
+    <result column="check_time" property="checkTime" jdbcType="TIMESTAMP" />
+    <result column="card_num" property="cardNum" jdbcType="VARCHAR" />
+    <result column="card_amount" property="cardAmount" jdbcType="BIGINT" />
+    <result column="carrier_id" property="carrierId" jdbcType="VARCHAR" />
+    <result column="acct_id" property="acctId" jdbcType="BIGINT" />
+    <result column="cust_id" property="custId" jdbcType="BIGINT" />
+    <result column="notify_url" property="notifyUrl" jdbcType="VARCHAR" />
+    <result column="return_url" property="returnUrl" jdbcType="VARCHAR" />
+    <result column="merchant_url" property="merchantUrl" jdbcType="VARCHAR" />
+    <result column="notify_id" property="notifyId" jdbcType="VARCHAR" />
+    <result column="out_return_status" property="outReturnStatus" jdbcType="VARCHAR" />
+    <result column="success_data" property="successData" jdbcType="VARCHAR" />
+    <result column="faild_data" property="faildData" jdbcType="VARCHAR" />
+    <result column="send_detail_data" property="sendDetailData" jdbcType="VARCHAR" />
+    <result column="request_time" property="requestTime" jdbcType="VARCHAR" />
+    <result column="reserved1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="reserved2" property="reserved2" jdbcType="VARCHAR" />
+    <result column="reserved3" property="reserved3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    tenant_id, pay_id, order_id, ori_order_id, order_name, request_source, pay_request_type, 
+    pay_channel, pay_amount, ord_des, buyer_email, return_email, draw_email, service_num, 
+    create_time, pay_method, status, last_status_date, pay_org_id, pay_org_serial, check_status, 
+    check_time, card_num, card_amount, carrier_id, acct_id, cust_id, notify_url, return_url, 
+    merchant_url, notify_id, out_return_status, success_data, faild_data, send_detail_data, 
+    request_time, reserved1, reserved2, reserved3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.runner.center.charge.dao.mapper.bo.PayCenterLogStateCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from pay_center_log_state
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart>=0" >
+      limit #{limitStart} , #{limitEnd}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.ai.runner.center.charge.dao.mapper.bo.PayCenterLogStateCriteria" >
+    delete from pay_center_log_state
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ai.runner.center.charge.dao.mapper.bo.PayCenterLogState" >
+    insert into pay_center_log_state (tenant_id, pay_id, order_id, 
+      ori_order_id, order_name, request_source, 
+      pay_request_type, pay_channel, pay_amount, 
+      ord_des, buyer_email, return_email, 
+      draw_email, service_num, create_time, 
+      pay_method, status, last_status_date, 
+      pay_org_id, pay_org_serial, check_status, 
+      check_time, card_num, card_amount, 
+      carrier_id, acct_id, cust_id, 
+      notify_url, return_url, merchant_url, 
+      notify_id, out_return_status, success_data, 
+      faild_data, send_detail_data, request_time, 
+      reserved1, reserved2, reserved3
+      )
+    values (#{tenantId,jdbcType=VARCHAR}, #{payId,jdbcType=BIGINT}, #{orderId,jdbcType=VARCHAR}, 
+      #{oriOrderId,jdbcType=BIGINT}, #{orderName,jdbcType=VARCHAR}, #{requestSource,jdbcType=VARCHAR}, 
+      #{payRequestType,jdbcType=INTEGER}, #{payChannel,jdbcType=INTEGER}, #{payAmount,jdbcType=BIGINT}, 
+      #{ordDes,jdbcType=VARCHAR}, #{buyerEmail,jdbcType=VARCHAR}, #{returnEmail,jdbcType=VARCHAR}, 
+      #{drawEmail,jdbcType=VARCHAR}, #{serviceNum,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{payMethod,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{lastStatusDate,jdbcType=TIMESTAMP}, 
+      #{payOrgId,jdbcType=VARCHAR}, #{payOrgSerial,jdbcType=VARCHAR}, #{checkStatus,jdbcType=INTEGER}, 
+      #{checkTime,jdbcType=TIMESTAMP}, #{cardNum,jdbcType=VARCHAR}, #{cardAmount,jdbcType=BIGINT}, 
+      #{carrierId,jdbcType=VARCHAR}, #{acctId,jdbcType=BIGINT}, #{custId,jdbcType=BIGINT}, 
+      #{notifyUrl,jdbcType=VARCHAR}, #{returnUrl,jdbcType=VARCHAR}, #{merchantUrl,jdbcType=VARCHAR}, 
+      #{notifyId,jdbcType=VARCHAR}, #{outReturnStatus,jdbcType=VARCHAR}, #{successData,jdbcType=VARCHAR}, 
+      #{faildData,jdbcType=VARCHAR}, #{sendDetailData,jdbcType=VARCHAR}, #{requestTime,jdbcType=VARCHAR}, 
+      #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ai.runner.center.charge.dao.mapper.bo.PayCenterLogState" >
+    insert into pay_center_log_state
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tenantId != null" >
+        tenant_id,
+      </if>
+      <if test="payId != null" >
+        pay_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="oriOrderId != null" >
+        ori_order_id,
+      </if>
+      <if test="orderName != null" >
+        order_name,
+      </if>
+      <if test="requestSource != null" >
+        request_source,
+      </if>
+      <if test="payRequestType != null" >
+        pay_request_type,
+      </if>
+      <if test="payChannel != null" >
+        pay_channel,
+      </if>
+      <if test="payAmount != null" >
+        pay_amount,
+      </if>
+      <if test="ordDes != null" >
+        ord_des,
+      </if>
+      <if test="buyerEmail != null" >
+        buyer_email,
+      </if>
+      <if test="returnEmail != null" >
+        return_email,
+      </if>
+      <if test="drawEmail != null" >
+        draw_email,
+      </if>
+      <if test="serviceNum != null" >
+        service_num,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="payMethod != null" >
+        pay_method,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="lastStatusDate != null" >
+        last_status_date,
+      </if>
+      <if test="payOrgId != null" >
+        pay_org_id,
+      </if>
+      <if test="payOrgSerial != null" >
+        pay_org_serial,
+      </if>
+      <if test="checkStatus != null" >
+        check_status,
+      </if>
+      <if test="checkTime != null" >
+        check_time,
+      </if>
+      <if test="cardNum != null" >
+        card_num,
+      </if>
+      <if test="cardAmount != null" >
+        card_amount,
+      </if>
+      <if test="carrierId != null" >
+        carrier_id,
+      </if>
+      <if test="acctId != null" >
+        acct_id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="notifyUrl != null" >
+        notify_url,
+      </if>
+      <if test="returnUrl != null" >
+        return_url,
+      </if>
+      <if test="merchantUrl != null" >
+        merchant_url,
+      </if>
+      <if test="notifyId != null" >
+        notify_id,
+      </if>
+      <if test="outReturnStatus != null" >
+        out_return_status,
+      </if>
+      <if test="successData != null" >
+        success_data,
+      </if>
+      <if test="faildData != null" >
+        faild_data,
+      </if>
+      <if test="sendDetailData != null" >
+        send_detail_data,
+      </if>
+      <if test="requestTime != null" >
+        request_time,
+      </if>
+      <if test="reserved1 != null" >
+        reserved1,
+      </if>
+      <if test="reserved2 != null" >
+        reserved2,
+      </if>
+      <if test="reserved3 != null" >
+        reserved3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="payId != null" >
+        #{payId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="oriOrderId != null" >
+        #{oriOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderName != null" >
+        #{orderName,jdbcType=VARCHAR},
+      </if>
+      <if test="requestSource != null" >
+        #{requestSource,jdbcType=VARCHAR},
+      </if>
+      <if test="payRequestType != null" >
+        #{payRequestType,jdbcType=INTEGER},
+      </if>
+      <if test="payChannel != null" >
+        #{payChannel,jdbcType=INTEGER},
+      </if>
+      <if test="payAmount != null" >
+        #{payAmount,jdbcType=BIGINT},
+      </if>
+      <if test="ordDes != null" >
+        #{ordDes,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerEmail != null" >
+        #{buyerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="returnEmail != null" >
+        #{returnEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="drawEmail != null" >
+        #{drawEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceNum != null" >
+        #{serviceNum,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payMethod != null" >
+        #{payMethod,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastStatusDate != null" >
+        #{lastStatusDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payOrgId != null" >
+        #{payOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="payOrgSerial != null" >
+        #{payOrgSerial,jdbcType=VARCHAR},
+      </if>
+      <if test="checkStatus != null" >
+        #{checkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="checkTime != null" >
+        #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cardNum != null" >
+        #{cardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="cardAmount != null" >
+        #{cardAmount,jdbcType=BIGINT},
+      </if>
+      <if test="carrierId != null" >
+        #{carrierId,jdbcType=VARCHAR},
+      </if>
+      <if test="acctId != null" >
+        #{acctId,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="notifyUrl != null" >
+        #{notifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="returnUrl != null" >
+        #{returnUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantUrl != null" >
+        #{merchantUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="notifyId != null" >
+        #{notifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="outReturnStatus != null" >
+        #{outReturnStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="successData != null" >
+        #{successData,jdbcType=VARCHAR},
+      </if>
+      <if test="faildData != null" >
+        #{faildData,jdbcType=VARCHAR},
+      </if>
+      <if test="sendDetailData != null" >
+        #{sendDetailData,jdbcType=VARCHAR},
+      </if>
+      <if test="requestTime != null" >
+        #{requestTime,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null" >
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null" >
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ai.runner.center.charge.dao.mapper.bo.PayCenterLogStateCriteria" resultType="java.lang.Integer" >
+    select count(*) from pay_center_log_state
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update pay_center_log_state
+    <set >
+      <if test="record.tenantId != null" >
+        tenant_id = #{record.tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payId != null" >
+        pay_id = #{record.payId,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderId != null" >
+        order_id = #{record.orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oriOrderId != null" >
+        ori_order_id = #{record.oriOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderName != null" >
+        order_name = #{record.orderName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requestSource != null" >
+        request_source = #{record.requestSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payRequestType != null" >
+        pay_request_type = #{record.payRequestType,jdbcType=INTEGER},
+      </if>
+      <if test="record.payChannel != null" >
+        pay_channel = #{record.payChannel,jdbcType=INTEGER},
+      </if>
+      <if test="record.payAmount != null" >
+        pay_amount = #{record.payAmount,jdbcType=BIGINT},
+      </if>
+      <if test="record.ordDes != null" >
+        ord_des = #{record.ordDes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buyerEmail != null" >
+        buyer_email = #{record.buyerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.returnEmail != null" >
+        return_email = #{record.returnEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.drawEmail != null" >
+        draw_email = #{record.drawEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceNum != null" >
+        service_num = #{record.serviceNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.payMethod != null" >
+        pay_method = #{record.payMethod,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.lastStatusDate != null" >
+        last_status_date = #{record.lastStatusDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.payOrgId != null" >
+        pay_org_id = #{record.payOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payOrgSerial != null" >
+        pay_org_serial = #{record.payOrgSerial,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkStatus != null" >
+        check_status = #{record.checkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.checkTime != null" >
+        check_time = #{record.checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cardNum != null" >
+        card_num = #{record.cardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardAmount != null" >
+        card_amount = #{record.cardAmount,jdbcType=BIGINT},
+      </if>
+      <if test="record.carrierId != null" >
+        carrier_id = #{record.carrierId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acctId != null" >
+        acct_id = #{record.acctId,jdbcType=BIGINT},
+      </if>
+      <if test="record.custId != null" >
+        cust_id = #{record.custId,jdbcType=BIGINT},
+      </if>
+      <if test="record.notifyUrl != null" >
+        notify_url = #{record.notifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.returnUrl != null" >
+        return_url = #{record.returnUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.merchantUrl != null" >
+        merchant_url = #{record.merchantUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.notifyId != null" >
+        notify_id = #{record.notifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.outReturnStatus != null" >
+        out_return_status = #{record.outReturnStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.successData != null" >
+        success_data = #{record.successData,jdbcType=VARCHAR},
+      </if>
+      <if test="record.faildData != null" >
+        faild_data = #{record.faildData,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendDetailData != null" >
+        send_detail_data = #{record.sendDetailData,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requestTime != null" >
+        request_time = #{record.requestTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserved1 != null" >
+        reserved1 = #{record.reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserved2 != null" >
+        reserved2 = #{record.reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserved3 != null" >
+        reserved3 = #{record.reserved3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update pay_center_log_state
+    set tenant_id = #{record.tenantId,jdbcType=VARCHAR},
+      pay_id = #{record.payId,jdbcType=BIGINT},
+      order_id = #{record.orderId,jdbcType=VARCHAR},
+      ori_order_id = #{record.oriOrderId,jdbcType=BIGINT},
+      order_name = #{record.orderName,jdbcType=VARCHAR},
+      request_source = #{record.requestSource,jdbcType=VARCHAR},
+      pay_request_type = #{record.payRequestType,jdbcType=INTEGER},
+      pay_channel = #{record.payChannel,jdbcType=INTEGER},
+      pay_amount = #{record.payAmount,jdbcType=BIGINT},
+      ord_des = #{record.ordDes,jdbcType=VARCHAR},
+      buyer_email = #{record.buyerEmail,jdbcType=VARCHAR},
+      return_email = #{record.returnEmail,jdbcType=VARCHAR},
+      draw_email = #{record.drawEmail,jdbcType=VARCHAR},
+      service_num = #{record.serviceNum,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      pay_method = #{record.payMethod,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      last_status_date = #{record.lastStatusDate,jdbcType=TIMESTAMP},
+      pay_org_id = #{record.payOrgId,jdbcType=VARCHAR},
+      pay_org_serial = #{record.payOrgSerial,jdbcType=VARCHAR},
+      check_status = #{record.checkStatus,jdbcType=INTEGER},
+      check_time = #{record.checkTime,jdbcType=TIMESTAMP},
+      card_num = #{record.cardNum,jdbcType=VARCHAR},
+      card_amount = #{record.cardAmount,jdbcType=BIGINT},
+      carrier_id = #{record.carrierId,jdbcType=VARCHAR},
+      acct_id = #{record.acctId,jdbcType=BIGINT},
+      cust_id = #{record.custId,jdbcType=BIGINT},
+      notify_url = #{record.notifyUrl,jdbcType=VARCHAR},
+      return_url = #{record.returnUrl,jdbcType=VARCHAR},
+      merchant_url = #{record.merchantUrl,jdbcType=VARCHAR},
+      notify_id = #{record.notifyId,jdbcType=VARCHAR},
+      out_return_status = #{record.outReturnStatus,jdbcType=VARCHAR},
+      success_data = #{record.successData,jdbcType=VARCHAR},
+      faild_data = #{record.faildData,jdbcType=VARCHAR},
+      send_detail_data = #{record.sendDetailData,jdbcType=VARCHAR},
+      request_time = #{record.requestTime,jdbcType=VARCHAR},
+      reserved1 = #{record.reserved1,jdbcType=VARCHAR},
+      reserved2 = #{record.reserved2,jdbcType=VARCHAR},
+      reserved3 = #{record.reserved3,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

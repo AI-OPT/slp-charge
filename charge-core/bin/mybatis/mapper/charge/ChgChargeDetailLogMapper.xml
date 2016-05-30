@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ai.runner.center.charge.dao.mapper.interfaces.ChgChargeDetailLogMapper" >
+  <resultMap id="BaseResultMap" type="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeDetailLog" >
+    <id column="fee_detail_id" property="feeDetailId" jdbcType="BIGINT" />
+    <result column="charge_id" property="chargeId" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="fee_item_id" property="feeItemId" jdbcType="VARCHAR" />
+    <result column="total_fee" property="totalFee" jdbcType="BIGINT" />
+    <result column="discount_fee" property="discountFee" jdbcType="BIGINT" />
+    <result column="oper_discount_fee" property="operDiscountFee" jdbcType="BIGINT" />
+    <result column="charge_fee" property="chargeFee" jdbcType="BIGINT" />
+    <result column="fee_type" property="feeType" jdbcType="VARCHAR" />
+    <result column="tenant_id" property="tenantId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    fee_detail_id, charge_id, order_id, fee_item_id, total_fee, discount_fee, oper_discount_fee, 
+    charge_fee, fee_type, tenant_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeDetailLogCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from chg_charge_detail_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart>=0" >
+      limit #{limitStart} , #{limitEnd}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from chg_charge_detail_log
+    where fee_detail_id = #{feeDetailId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="Long" >
+    delete from chg_charge_detail_log
+    where fee_detail_id = #{feeDetailId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeDetailLogCriteria" >
+    delete from chg_charge_detail_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeDetailLog" >
+    insert into chg_charge_detail_log (fee_detail_id, charge_id, order_id, 
+      fee_item_id, total_fee, discount_fee, 
+      oper_discount_fee, charge_fee, fee_type, 
+      tenant_id)
+    values (#{feeDetailId,jdbcType=BIGINT}, #{chargeId,jdbcType=BIGINT}, #{orderId,jdbcType=VARCHAR}, 
+      #{feeItemId,jdbcType=VARCHAR}, #{totalFee,jdbcType=BIGINT}, #{discountFee,jdbcType=BIGINT}, 
+      #{operDiscountFee,jdbcType=BIGINT}, #{chargeFee,jdbcType=BIGINT}, #{feeType,jdbcType=VARCHAR}, 
+      #{tenantId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeDetailLog" >
+    insert into chg_charge_detail_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="feeDetailId != null" >
+        fee_detail_id,
+      </if>
+      <if test="chargeId != null" >
+        charge_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="feeItemId != null" >
+        fee_item_id,
+      </if>
+      <if test="totalFee != null" >
+        total_fee,
+      </if>
+      <if test="discountFee != null" >
+        discount_fee,
+      </if>
+      <if test="operDiscountFee != null" >
+        oper_discount_fee,
+      </if>
+      <if test="chargeFee != null" >
+        charge_fee,
+      </if>
+      <if test="feeType != null" >
+        fee_type,
+      </if>
+      <if test="tenantId != null" >
+        tenant_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="feeDetailId != null" >
+        #{feeDetailId,jdbcType=BIGINT},
+      </if>
+      <if test="chargeId != null" >
+        #{chargeId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="feeItemId != null" >
+        #{feeItemId,jdbcType=VARCHAR},
+      </if>
+      <if test="totalFee != null" >
+        #{totalFee,jdbcType=BIGINT},
+      </if>
+      <if test="discountFee != null" >
+        #{discountFee,jdbcType=BIGINT},
+      </if>
+      <if test="operDiscountFee != null" >
+        #{operDiscountFee,jdbcType=BIGINT},
+      </if>
+      <if test="chargeFee != null" >
+        #{chargeFee,jdbcType=BIGINT},
+      </if>
+      <if test="feeType != null" >
+        #{feeType,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeDetailLogCriteria" resultType="java.lang.Integer" >
+    select count(*) from chg_charge_detail_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update chg_charge_detail_log
+    <set >
+      <if test="record.feeDetailId != null" >
+        fee_detail_id = #{record.feeDetailId,jdbcType=BIGINT},
+      </if>
+      <if test="record.chargeId != null" >
+        charge_id = #{record.chargeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderId != null" >
+        order_id = #{record.orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.feeItemId != null" >
+        fee_item_id = #{record.feeItemId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalFee != null" >
+        total_fee = #{record.totalFee,jdbcType=BIGINT},
+      </if>
+      <if test="record.discountFee != null" >
+        discount_fee = #{record.discountFee,jdbcType=BIGINT},
+      </if>
+      <if test="record.operDiscountFee != null" >
+        oper_discount_fee = #{record.operDiscountFee,jdbcType=BIGINT},
+      </if>
+      <if test="record.chargeFee != null" >
+        charge_fee = #{record.chargeFee,jdbcType=BIGINT},
+      </if>
+      <if test="record.feeType != null" >
+        fee_type = #{record.feeType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tenantId != null" >
+        tenant_id = #{record.tenantId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update chg_charge_detail_log
+    set fee_detail_id = #{record.feeDetailId,jdbcType=BIGINT},
+      charge_id = #{record.chargeId,jdbcType=BIGINT},
+      order_id = #{record.orderId,jdbcType=VARCHAR},
+      fee_item_id = #{record.feeItemId,jdbcType=VARCHAR},
+      total_fee = #{record.totalFee,jdbcType=BIGINT},
+      discount_fee = #{record.discountFee,jdbcType=BIGINT},
+      oper_discount_fee = #{record.operDiscountFee,jdbcType=BIGINT},
+      charge_fee = #{record.chargeFee,jdbcType=BIGINT},
+      fee_type = #{record.feeType,jdbcType=VARCHAR},
+      tenant_id = #{record.tenantId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeDetailLog" >
+    update chg_charge_detail_log
+    <set >
+      <if test="chargeId != null" >
+        charge_id = #{chargeId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="feeItemId != null" >
+        fee_item_id = #{feeItemId,jdbcType=VARCHAR},
+      </if>
+      <if test="totalFee != null" >
+        total_fee = #{totalFee,jdbcType=BIGINT},
+      </if>
+      <if test="discountFee != null" >
+        discount_fee = #{discountFee,jdbcType=BIGINT},
+      </if>
+      <if test="operDiscountFee != null" >
+        oper_discount_fee = #{operDiscountFee,jdbcType=BIGINT},
+      </if>
+      <if test="chargeFee != null" >
+        charge_fee = #{chargeFee,jdbcType=BIGINT},
+      </if>
+      <if test="feeType != null" >
+        fee_type = #{feeType,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null" >
+        tenant_id = #{tenantId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where fee_detail_id = #{feeDetailId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeDetailLog" >
+    update chg_charge_detail_log
+    set charge_id = #{chargeId,jdbcType=BIGINT},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      fee_item_id = #{feeItemId,jdbcType=VARCHAR},
+      total_fee = #{totalFee,jdbcType=BIGINT},
+      discount_fee = #{discountFee,jdbcType=BIGINT},
+      oper_discount_fee = #{operDiscountFee,jdbcType=BIGINT},
+      charge_fee = #{chargeFee,jdbcType=BIGINT},
+      fee_type = #{feeType,jdbcType=VARCHAR},
+      tenant_id = #{tenantId,jdbcType=VARCHAR}
+    where fee_detail_id = #{feeDetailId,jdbcType=BIGINT}
+  </update>
+</mapper>

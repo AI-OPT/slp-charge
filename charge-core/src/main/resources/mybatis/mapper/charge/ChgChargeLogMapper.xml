@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ai.runner.center.charge.dao.mapper.interfaces.ChgChargeLogMapper" >
+  <resultMap id="BaseResultMap" type="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeLog" >
+    <id column="charge_id" property="chargeId" jdbcType="BIGINT" />
+    <result column="tenant_id" property="tenantId" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="busi_type" property="busiType" jdbcType="VARCHAR" />
+    <result column="busi_oper_code" property="busiOperCode" jdbcType="VARCHAR" />
+    <result column="pay_channel" property="payChannel" jdbcType="VARCHAR" />
+    <result column="batch_code" property="batchCode" jdbcType="VARCHAR" />
+    <result column="total_fee" property="totalFee" jdbcType="BIGINT" />
+    <result column="discount_fee" property="discountFee" jdbcType="BIGINT" />
+    <result column="oper_discount_fee" property="operDiscountFee" jdbcType="BIGINT" />
+    <result column="charge_fee" property="chargeFee" jdbcType="BIGINT" />
+    <result column="paid_fee" property="paidFee" jdbcType="BIGINT" />
+    <result column="cust_id" property="custId" jdbcType="BIGINT" />
+    <result column="acct_id" property="acctId" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="last_status_date" property="lastStatusDate" jdbcType="TIMESTAMP" />
+    <result column="print_times" property="printTimes" jdbcType="INTEGER" />
+    <result column="op_prov_code" property="opProvCode" jdbcType="VARCHAR" />
+    <result column="op_city_code" property="opCityCode" jdbcType="VARCHAR" />
+    <result column="chl_id" property="chlId" jdbcType="VARCHAR" />
+    <result column="oper_id" property="operId" jdbcType="VARCHAR" />
+    <result column="check_status" property="checkStatus" jdbcType="INTEGER" />
+    <result column="check_time" property="checkTime" jdbcType="TIMESTAMP" />
+    <result column="cancel_charge_id" property="cancelChargeId" jdbcType="BIGINT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    charge_id, tenant_id, order_id, busi_type, busi_oper_code, pay_channel, batch_code, 
+    total_fee, discount_fee, oper_discount_fee, charge_fee, paid_fee, cust_id, acct_id, 
+    create_time, status, last_status_date, print_times, op_prov_code, op_city_code, chl_id, 
+    oper_id, check_status, check_time, cancel_charge_id, remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeLogCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from chg_charge_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart>=0" >
+      limit #{limitStart} , #{limitEnd}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from chg_charge_log
+    where charge_id = #{chargeId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="Long" >
+    delete from chg_charge_log
+    where charge_id = #{chargeId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeLogCriteria" >
+    delete from chg_charge_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeLog" >
+    insert into chg_charge_log (charge_id, tenant_id, order_id, 
+      busi_type, busi_oper_code, pay_channel, 
+      batch_code, total_fee, discount_fee, 
+      oper_discount_fee, charge_fee, paid_fee, 
+      cust_id, acct_id, create_time, 
+      status, last_status_date, print_times, 
+      op_prov_code, op_city_code, chl_id, 
+      oper_id, check_status, check_time, 
+      cancel_charge_id, remark)
+    values (#{chargeId,jdbcType=BIGINT}, #{tenantId,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, 
+      #{busiType,jdbcType=VARCHAR}, #{busiOperCode,jdbcType=VARCHAR}, #{payChannel,jdbcType=VARCHAR}, 
+      #{batchCode,jdbcType=VARCHAR}, #{totalFee,jdbcType=BIGINT}, #{discountFee,jdbcType=BIGINT}, 
+      #{operDiscountFee,jdbcType=BIGINT}, #{chargeFee,jdbcType=BIGINT}, #{paidFee,jdbcType=BIGINT}, 
+      #{custId,jdbcType=BIGINT}, #{acctId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{lastStatusDate,jdbcType=TIMESTAMP}, #{printTimes,jdbcType=INTEGER}, 
+      #{opProvCode,jdbcType=VARCHAR}, #{opCityCode,jdbcType=VARCHAR}, #{chlId,jdbcType=VARCHAR}, 
+      #{operId,jdbcType=VARCHAR}, #{checkStatus,jdbcType=INTEGER}, #{checkTime,jdbcType=TIMESTAMP}, 
+      #{cancelChargeId,jdbcType=BIGINT}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeLog" >
+    insert into chg_charge_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="chargeId != null" >
+        charge_id,
+      </if>
+      <if test="tenantId != null" >
+        tenant_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="busiType != null" >
+        busi_type,
+      </if>
+      <if test="busiOperCode != null" >
+        busi_oper_code,
+      </if>
+      <if test="payChannel != null" >
+        pay_channel,
+      </if>
+      <if test="batchCode != null" >
+        batch_code,
+      </if>
+      <if test="totalFee != null" >
+        total_fee,
+      </if>
+      <if test="discountFee != null" >
+        discount_fee,
+      </if>
+      <if test="operDiscountFee != null" >
+        oper_discount_fee,
+      </if>
+      <if test="chargeFee != null" >
+        charge_fee,
+      </if>
+      <if test="paidFee != null" >
+        paid_fee,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="acctId != null" >
+        acct_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="lastStatusDate != null" >
+        last_status_date,
+      </if>
+      <if test="printTimes != null" >
+        print_times,
+      </if>
+      <if test="opProvCode != null" >
+        op_prov_code,
+      </if>
+      <if test="opCityCode != null" >
+        op_city_code,
+      </if>
+      <if test="chlId != null" >
+        chl_id,
+      </if>
+      <if test="operId != null" >
+        oper_id,
+      </if>
+      <if test="checkStatus != null" >
+        check_status,
+      </if>
+      <if test="checkTime != null" >
+        check_time,
+      </if>
+      <if test="cancelChargeId != null" >
+        cancel_charge_id,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="chargeId != null" >
+        #{chargeId,jdbcType=BIGINT},
+      </if>
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="busiType != null" >
+        #{busiType,jdbcType=VARCHAR},
+      </if>
+      <if test="busiOperCode != null" >
+        #{busiOperCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payChannel != null" >
+        #{payChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="batchCode != null" >
+        #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="totalFee != null" >
+        #{totalFee,jdbcType=BIGINT},
+      </if>
+      <if test="discountFee != null" >
+        #{discountFee,jdbcType=BIGINT},
+      </if>
+      <if test="operDiscountFee != null" >
+        #{operDiscountFee,jdbcType=BIGINT},
+      </if>
+      <if test="chargeFee != null" >
+        #{chargeFee,jdbcType=BIGINT},
+      </if>
+      <if test="paidFee != null" >
+        #{paidFee,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="acctId != null" >
+        #{acctId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastStatusDate != null" >
+        #{lastStatusDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="printTimes != null" >
+        #{printTimes,jdbcType=INTEGER},
+      </if>
+      <if test="opProvCode != null" >
+        #{opProvCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opCityCode != null" >
+        #{opCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="chlId != null" >
+        #{chlId,jdbcType=VARCHAR},
+      </if>
+      <if test="operId != null" >
+        #{operId,jdbcType=VARCHAR},
+      </if>
+      <if test="checkStatus != null" >
+        #{checkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="checkTime != null" >
+        #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelChargeId != null" >
+        #{cancelChargeId,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeLogCriteria" resultType="java.lang.Integer" >
+    select count(*) from chg_charge_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update chg_charge_log
+    <set >
+      <if test="record.chargeId != null" >
+        charge_id = #{record.chargeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.tenantId != null" >
+        tenant_id = #{record.tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderId != null" >
+        order_id = #{record.orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.busiType != null" >
+        busi_type = #{record.busiType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.busiOperCode != null" >
+        busi_oper_code = #{record.busiOperCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payChannel != null" >
+        pay_channel = #{record.payChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.batchCode != null" >
+        batch_code = #{record.batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalFee != null" >
+        total_fee = #{record.totalFee,jdbcType=BIGINT},
+      </if>
+      <if test="record.discountFee != null" >
+        discount_fee = #{record.discountFee,jdbcType=BIGINT},
+      </if>
+      <if test="record.operDiscountFee != null" >
+        oper_discount_fee = #{record.operDiscountFee,jdbcType=BIGINT},
+      </if>
+      <if test="record.chargeFee != null" >
+        charge_fee = #{record.chargeFee,jdbcType=BIGINT},
+      </if>
+      <if test="record.paidFee != null" >
+        paid_fee = #{record.paidFee,jdbcType=BIGINT},
+      </if>
+      <if test="record.custId != null" >
+        cust_id = #{record.custId,jdbcType=BIGINT},
+      </if>
+      <if test="record.acctId != null" >
+        acct_id = #{record.acctId,jdbcType=BIGINT},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.lastStatusDate != null" >
+        last_status_date = #{record.lastStatusDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.printTimes != null" >
+        print_times = #{record.printTimes,jdbcType=INTEGER},
+      </if>
+      <if test="record.opProvCode != null" >
+        op_prov_code = #{record.opProvCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.opCityCode != null" >
+        op_city_code = #{record.opCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chlId != null" >
+        chl_id = #{record.chlId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operId != null" >
+        oper_id = #{record.operId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkStatus != null" >
+        check_status = #{record.checkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.checkTime != null" >
+        check_time = #{record.checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cancelChargeId != null" >
+        cancel_charge_id = #{record.cancelChargeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update chg_charge_log
+    set charge_id = #{record.chargeId,jdbcType=BIGINT},
+      tenant_id = #{record.tenantId,jdbcType=VARCHAR},
+      order_id = #{record.orderId,jdbcType=VARCHAR},
+      busi_type = #{record.busiType,jdbcType=VARCHAR},
+      busi_oper_code = #{record.busiOperCode,jdbcType=VARCHAR},
+      pay_channel = #{record.payChannel,jdbcType=VARCHAR},
+      batch_code = #{record.batchCode,jdbcType=VARCHAR},
+      total_fee = #{record.totalFee,jdbcType=BIGINT},
+      discount_fee = #{record.discountFee,jdbcType=BIGINT},
+      oper_discount_fee = #{record.operDiscountFee,jdbcType=BIGINT},
+      charge_fee = #{record.chargeFee,jdbcType=BIGINT},
+      paid_fee = #{record.paidFee,jdbcType=BIGINT},
+      cust_id = #{record.custId,jdbcType=BIGINT},
+      acct_id = #{record.acctId,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER},
+      last_status_date = #{record.lastStatusDate,jdbcType=TIMESTAMP},
+      print_times = #{record.printTimes,jdbcType=INTEGER},
+      op_prov_code = #{record.opProvCode,jdbcType=VARCHAR},
+      op_city_code = #{record.opCityCode,jdbcType=VARCHAR},
+      chl_id = #{record.chlId,jdbcType=VARCHAR},
+      oper_id = #{record.operId,jdbcType=VARCHAR},
+      check_status = #{record.checkStatus,jdbcType=INTEGER},
+      check_time = #{record.checkTime,jdbcType=TIMESTAMP},
+      cancel_charge_id = #{record.cancelChargeId,jdbcType=BIGINT},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeLog" >
+    update chg_charge_log
+    <set >
+      <if test="tenantId != null" >
+        tenant_id = #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="busiType != null" >
+        busi_type = #{busiType,jdbcType=VARCHAR},
+      </if>
+      <if test="busiOperCode != null" >
+        busi_oper_code = #{busiOperCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payChannel != null" >
+        pay_channel = #{payChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="batchCode != null" >
+        batch_code = #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="totalFee != null" >
+        total_fee = #{totalFee,jdbcType=BIGINT},
+      </if>
+      <if test="discountFee != null" >
+        discount_fee = #{discountFee,jdbcType=BIGINT},
+      </if>
+      <if test="operDiscountFee != null" >
+        oper_discount_fee = #{operDiscountFee,jdbcType=BIGINT},
+      </if>
+      <if test="chargeFee != null" >
+        charge_fee = #{chargeFee,jdbcType=BIGINT},
+      </if>
+      <if test="paidFee != null" >
+        paid_fee = #{paidFee,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="acctId != null" >
+        acct_id = #{acctId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastStatusDate != null" >
+        last_status_date = #{lastStatusDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="printTimes != null" >
+        print_times = #{printTimes,jdbcType=INTEGER},
+      </if>
+      <if test="opProvCode != null" >
+        op_prov_code = #{opProvCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opCityCode != null" >
+        op_city_code = #{opCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="chlId != null" >
+        chl_id = #{chlId,jdbcType=VARCHAR},
+      </if>
+      <if test="operId != null" >
+        oper_id = #{operId,jdbcType=VARCHAR},
+      </if>
+      <if test="checkStatus != null" >
+        check_status = #{checkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="checkTime != null" >
+        check_time = #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelChargeId != null" >
+        cancel_charge_id = #{cancelChargeId,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where charge_id = #{chargeId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeLog" >
+    update chg_charge_log
+    set tenant_id = #{tenantId,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      busi_type = #{busiType,jdbcType=VARCHAR},
+      busi_oper_code = #{busiOperCode,jdbcType=VARCHAR},
+      pay_channel = #{payChannel,jdbcType=VARCHAR},
+      batch_code = #{batchCode,jdbcType=VARCHAR},
+      total_fee = #{totalFee,jdbcType=BIGINT},
+      discount_fee = #{discountFee,jdbcType=BIGINT},
+      oper_discount_fee = #{operDiscountFee,jdbcType=BIGINT},
+      charge_fee = #{chargeFee,jdbcType=BIGINT},
+      paid_fee = #{paidFee,jdbcType=BIGINT},
+      cust_id = #{custId,jdbcType=BIGINT},
+      acct_id = #{acctId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      last_status_date = #{lastStatusDate,jdbcType=TIMESTAMP},
+      print_times = #{printTimes,jdbcType=INTEGER},
+      op_prov_code = #{opProvCode,jdbcType=VARCHAR},
+      op_city_code = #{opCityCode,jdbcType=VARCHAR},
+      chl_id = #{chlId,jdbcType=VARCHAR},
+      oper_id = #{operId,jdbcType=VARCHAR},
+      check_status = #{checkStatus,jdbcType=INTEGER},
+      check_time = #{checkTime,jdbcType=TIMESTAMP},
+      cancel_charge_id = #{cancelChargeId,jdbcType=BIGINT},
+      remark = #{remark,jdbcType=VARCHAR}
+    where charge_id = #{chargeId,jdbcType=BIGINT}
+  </update>
+</mapper>

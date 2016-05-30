@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ai.runner.center.charge.dao.mapper.interfaces.AccReceiptPrintLogMapper" >
+  <resultMap id="BaseResultMap" type="com.ai.runner.center.charge.dao.mapper.bo.AccReceiptPrintLog" >
+    <result column="tenant_id" property="tenantId" jdbcType="VARCHAR" />
+    <result column="system_id" property="systemId" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="cust_id" property="custId" jdbcType="BIGINT" />
+    <result column="cust_name" property="custName" jdbcType="VARCHAR" />
+    <result column="paid_fee" property="paidFee" jdbcType="BIGINT" />
+    <result column="paystyle_name" property="paystyleName" jdbcType="VARCHAR" />
+    <result column="value_date" property="valueDate" jdbcType="TIMESTAMP" />
+    <result column="chl_id" property="chlId" jdbcType="VARCHAR" />
+    <result column="operator_id" property="operatorId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    tenant_id, system_id, order_id, cust_id, cust_name, paid_fee, paystyle_name, value_date, 
+    chl_id, operator_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.runner.center.charge.dao.mapper.bo.AccReceiptPrintLogCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from acc_receipt_print_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart>=0" >
+      limit #{limitStart} , #{limitEnd}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.ai.runner.center.charge.dao.mapper.bo.AccReceiptPrintLogCriteria" >
+    delete from acc_receipt_print_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ai.runner.center.charge.dao.mapper.bo.AccReceiptPrintLog" >
+    insert into acc_receipt_print_log (tenant_id, system_id, order_id, 
+      cust_id, cust_name, paid_fee, 
+      paystyle_name, value_date, chl_id, 
+      operator_id)
+    values (#{tenantId,jdbcType=VARCHAR}, #{systemId,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, 
+      #{custId,jdbcType=BIGINT}, #{custName,jdbcType=VARCHAR}, #{paidFee,jdbcType=BIGINT}, 
+      #{paystyleName,jdbcType=VARCHAR}, #{valueDate,jdbcType=TIMESTAMP}, #{chlId,jdbcType=VARCHAR}, 
+      #{operatorId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ai.runner.center.charge.dao.mapper.bo.AccReceiptPrintLog" >
+    insert into acc_receipt_print_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tenantId != null" >
+        tenant_id,
+      </if>
+      <if test="systemId != null" >
+        system_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="custName != null" >
+        cust_name,
+      </if>
+      <if test="paidFee != null" >
+        paid_fee,
+      </if>
+      <if test="paystyleName != null" >
+        paystyle_name,
+      </if>
+      <if test="valueDate != null" >
+        value_date,
+      </if>
+      <if test="chlId != null" >
+        chl_id,
+      </if>
+      <if test="operatorId != null" >
+        operator_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tenantId != null" >
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="systemId != null" >
+        #{systemId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="custName != null" >
+        #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="paidFee != null" >
+        #{paidFee,jdbcType=BIGINT},
+      </if>
+      <if test="paystyleName != null" >
+        #{paystyleName,jdbcType=VARCHAR},
+      </if>
+      <if test="valueDate != null" >
+        #{valueDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chlId != null" >
+        #{chlId,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ai.runner.center.charge.dao.mapper.bo.AccReceiptPrintLogCriteria" resultType="java.lang.Integer" >
+    select count(*) from acc_receipt_print_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update acc_receipt_print_log
+    <set >
+      <if test="record.tenantId != null" >
+        tenant_id = #{record.tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.systemId != null" >
+        system_id = #{record.systemId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderId != null" >
+        order_id = #{record.orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.custId != null" >
+        cust_id = #{record.custId,jdbcType=BIGINT},
+      </if>
+      <if test="record.custName != null" >
+        cust_name = #{record.custName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paidFee != null" >
+        paid_fee = #{record.paidFee,jdbcType=BIGINT},
+      </if>
+      <if test="record.paystyleName != null" >
+        paystyle_name = #{record.paystyleName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.valueDate != null" >
+        value_date = #{record.valueDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.chlId != null" >
+        chl_id = #{record.chlId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operatorId != null" >
+        operator_id = #{record.operatorId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update acc_receipt_print_log
+    set tenant_id = #{record.tenantId,jdbcType=VARCHAR},
+      system_id = #{record.systemId,jdbcType=VARCHAR},
+      order_id = #{record.orderId,jdbcType=VARCHAR},
+      cust_id = #{record.custId,jdbcType=BIGINT},
+      cust_name = #{record.custName,jdbcType=VARCHAR},
+      paid_fee = #{record.paidFee,jdbcType=BIGINT},
+      paystyle_name = #{record.paystyleName,jdbcType=VARCHAR},
+      value_date = #{record.valueDate,jdbcType=TIMESTAMP},
+      chl_id = #{record.chlId,jdbcType=VARCHAR},
+      operator_id = #{record.operatorId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
