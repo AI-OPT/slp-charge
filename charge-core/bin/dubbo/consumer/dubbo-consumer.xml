@@ -18,7 +18,9 @@
 	<dubbo:application name="consumer-of-${dubbo.appname}" />
 
 	<dubbo:registry protocol="${dubbo.registry.protocol}"
-		address="${dubbo.registry.address}" file="${dubbo.registry.file}" />
+		address="${center.dubbo.registry.address}" />
+
+	<dubbo:monitor protocol="registry" />
 
 	<!-- <dubbo:consumer timeout="${dubbo.consoumer.timeout}" /> -->
 

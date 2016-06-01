@@ -1,6 +1,8 @@
 package com.ai.runner.center.charge.test.api.paymentquery.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
@@ -12,17 +14,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ai.opt.sdk.util.DateUtil;
 import com.ai.runner.base.exception.CallerException;
 import com.ai.runner.base.vo.PageInfo;
-import com.ai.runner.center.charge.api.paymentquery.interfaces.IPaymentQuerySV;
-import com.ai.runner.center.charge.api.paymentquery.param.ChargeInfoQueryByAcctIdParam;
-import com.ai.runner.center.charge.api.paymentquery.param.ChargeBaseInfo;
-import com.ai.runner.center.charge.api.paymentquery.param.ChargeIdParam;
-import com.ai.runner.center.charge.api.paymentquery.param.ChargeInfo;
-import com.ai.runner.center.charge.api.paymentquery.param.ChargePayTypeDetail;
-import com.ai.runner.center.charge.api.paymentquery.param.ChargeInfoQueryByCustIdParam;
-import com.ai.runner.center.charge.api.paymentquery.param.PaymentQryParam;
-import com.ai.runner.utils.util.DateUtil;
+import com.ai.slp.charge.api.paymentquery.interfaces.IPaymentQuerySV;
+import com.ai.slp.charge.api.paymentquery.param.ChargeBaseInfo;
+import com.ai.slp.charge.api.paymentquery.param.ChargeIdParam;
+import com.ai.slp.charge.api.paymentquery.param.ChargeInfo;
+import com.ai.slp.charge.api.paymentquery.param.ChargeInfoQueryByAcctIdParam;
+import com.ai.slp.charge.api.paymentquery.param.ChargeInfoQueryByCustIdParam;
+import com.ai.slp.charge.api.paymentquery.param.ChargePayTypeDetail;
+import com.ai.slp.charge.api.paymentquery.param.PaymentQryParam;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 

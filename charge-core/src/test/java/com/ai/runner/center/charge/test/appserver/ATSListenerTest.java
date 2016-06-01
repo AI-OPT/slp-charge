@@ -7,8 +7,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ai.runner.utils.appserver.ATSListenerStart;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/context/core-context.xml")
 public class ATSListenerTest {
@@ -31,7 +29,7 @@ public class ATSListenerTest {
      */
     @Test
     public void testATSListener() {
-        ATSListenerStart.main(null);
+//        ATSListenerStart.main(null);
     }
     
 }

@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ai.runner.sdk.sequence.util.SeqUtil;
+import com.ai.opt.sdk.components.sequence.util.SeqUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "/context/core-context.xml" })

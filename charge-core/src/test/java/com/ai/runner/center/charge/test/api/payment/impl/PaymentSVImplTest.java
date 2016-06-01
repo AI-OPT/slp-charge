@@ -1,6 +1,6 @@
 package com.ai.runner.center.charge.test.api.payment.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +14,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ai.runner.base.exception.CallerException;
-import com.ai.runner.center.charge.api.payment.interfaces.IPaymentSV;
-import com.ai.runner.center.charge.api.payment.param.ChargeDetail;
-import com.ai.runner.center.charge.api.payment.param.PayTypeDetail;
-import com.ai.runner.center.charge.api.payment.param.PaymentParam;
+import com.ai.slp.charge.api.payment.interfaces.IPaymentSV;
+import com.ai.slp.charge.api.payment.param.ChargeDetail;
+import com.ai.slp.charge.api.payment.param.PayTypeDetail;
+import com.ai.slp.charge.api.payment.param.PaymentParam;
 import com.alibaba.fastjson.JSON;
 
 

@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ai.runner.center.charge.api.receipt.interfaces.IReceiptPrintSV;
-import com.ai.runner.center.charge.api.receipt.param.ReceiptPrintLog;
-import com.ai.runner.utils.util.DateUtil;
+import com.ai.opt.sdk.util.DateUtil;
+import com.ai.slp.charge.api.receipt.interfaces.IReceiptPrintSV;
+import com.ai.slp.charge.api.receipt.param.ReceiptPrintLog;
 import com.alibaba.fastjson.JSON;
 
 

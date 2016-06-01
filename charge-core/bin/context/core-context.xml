@@ -20,13 +20,18 @@
                 <value>classpath*:**/*.properties</value>
             </list>
         </property>
-    </bean>    
-    <!-- PaaSDBS权限 -->
-    <bean id="paasDbUserAuth" class="com.ai.runner.sdk.dbs.auth.PaasDbUserAuth"></bean>
-    <!-- 配置DBS数据源 -->
-    <bean id="dataSource" class="com.ai.paas.ipaas.dbs.distribute.DistributedDataSource" init-method="init">
-        <constructor-arg name="iPaaSDbUserAuth" ref="paasDbUserAuth"/>
     </bean>
+
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="com.ai.runner.sdk.datasource.RunnerHikariDataSource">
+		<constructor-arg name="dataSourceName" value="charge-center-db" />
+	</bean>
+	<bean id="seqDataSourceLoader"
+		class="com.ai.runner.sdk.sequence.normal.datasource.SeqDataSourceLoader"
+		init-method="init">
+		<property name="ds" ref="dataSource" />
+	</bean>    
+    
 	<!-- 配置myBatis的sqlSessionFactory -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
@@ -37,16 +42,12 @@
         <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
-    <!-- 事务配置 
-    	DBS事务管理器：com.ai.paas.ipaas.txs.dtm.spring.DistributedTransactionManager
-    	Spring数据源事务管理器：org.springframework.jdbc.datasource.DataSourceTransactionManager
-    -->
-    <bean id="transactionManager" class="com.ai.paas.ipaas.txs.dtm.spring.DistributedTransactionManager">
-    	<property name="dataSource" ref="dataSource"/>
+	<!-- 事务配置 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<!-- PaaSTXS授权-->
-    <bean id="paaSTransactionUserAuth" class="com.ai.runner.sdk.txs.auth.PaaSTransactionUserAuth" init-method="init">
-    </bean>
+	
     <!--AOP 事务配置 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
@@ -66,27 +67,5 @@
     <context:annotation-config/>
     <!-- 设定注解扫描基础包 -->
     <context:component-scan base-package="com.ai.runner.center.charge"/>
-
-    <bean id="dubboExceptionConvertor" class="com.ai.runner.utils.aop.DubboExceptionConvertInterceptor"/>
-    <bean id="dubboRequestTracking" class="com.ai.runner.utils.aop.DubboRequestTracking"/>
-
-    <aop:config>
-        <aop:pointcut id="dubboExceptionThrowing"
-                      expression="execution (* com.ai.runner.center.charge.api.*.impl.*.*(..))"/>
-
-        <aop:aspect id="aspectLoggging" ref="dubboExceptionConvertor">
-            <aop:after-throwing method="convertException" throwing="error"
-                                pointcut-ref="dubboExceptionThrowing"/>
-        </aop:aspect>
-
-        <aop:aspect id="aspectReturn" ref="dubboRequestTracking">
-            <aop:after-returning method="printReturn" returning="returnVal"
-                                 pointcut-ref="dubboExceptionThrowing"/>
-        </aop:aspect>
-
-        <aop:aspect id="beforeInvork" ref="dubboRequestTracking">
-            <aop:before method="beforeInvorkMethod" pointcut-ref="dubboExceptionThrowing"/>
-        </aop:aspect>
-    </aop:config> 
     
 </beans>
