@@ -20,7 +20,7 @@ allprojects {
     sourceCompatibility = 1.7
 
     configurations.all { resolutionStrategy.cacheChangingModulesFor 0, 'seconds' }
-    group="com.ai.runner.center.charge"
+    group="com.ai.slp.charge"
 }
 
 subprojects {
