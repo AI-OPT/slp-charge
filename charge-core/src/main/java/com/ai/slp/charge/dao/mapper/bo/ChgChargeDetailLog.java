@@ -1,4 +1,4 @@
-package com.ai.runner.center.charge.dao.mapper.bo;
+package com.ai.slp.charge.dao.mapper.bo;
 
 public class ChgChargeDetailLog {
     private Long feeDetailId;

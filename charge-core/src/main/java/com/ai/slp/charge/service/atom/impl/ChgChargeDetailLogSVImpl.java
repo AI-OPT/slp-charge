@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.ai.runner.center.charge.dao.mapper.bo.ChgChargeDetailLog;
+import com.ai.slp.charge.dao.mapper.bo.ChgChargeDetailLog;
 import com.ai.slp.charge.dao.mapper.bo.ChgChargeDetailLogCriteria;
 import com.ai.slp.charge.dao.mapper.bo.ChgChargeDetailLogCriteria.Criteria;
 import com.ai.slp.charge.dao.mapper.factory.MapperFactory;

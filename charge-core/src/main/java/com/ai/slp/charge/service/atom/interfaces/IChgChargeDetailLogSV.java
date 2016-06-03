@@ -2,7 +2,7 @@ package com.ai.slp.charge.service.atom.interfaces;
 
 import java.util.List;
 
-import com.ai.runner.center.charge.dao.mapper.bo.ChgChargeDetailLog;
+import com.ai.slp.charge.dao.mapper.bo.ChgChargeDetailLog;
 
 /**
  * 收费明细基础服务定义类

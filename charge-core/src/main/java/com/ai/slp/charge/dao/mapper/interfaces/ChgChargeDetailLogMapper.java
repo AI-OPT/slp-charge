@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.ai.runner.center.charge.dao.mapper.bo.ChgChargeDetailLog;
+import com.ai.slp.charge.dao.mapper.bo.ChgChargeDetailLog;
 import com.ai.slp.charge.dao.mapper.bo.ChgChargeDetailLogCriteria;
 
 public interface ChgChargeDetailLogMapper {
