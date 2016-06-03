@@ -30,7 +30,7 @@
 
 	<dubbo:monitor protocol="registry" />
 
-	<dubbo:annotation package="com.ai.runner.center.charge.api" />
+	<dubbo:annotation package="com.ai.slp.charge.api" />
 
 	<import resource="../../context/core-context.xml" />
 </beans>
