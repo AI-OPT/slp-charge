@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ai.runner.center.charge.dao.mapper.interfaces.ChgChargeLogMapper" >
-  <resultMap id="BaseResultMap" type="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeLog" >
+<mapper namespace="com.ai.slp.charge.dao.mapper.interfaces.ChgChargeLogMapper" >
+  <resultMap id="BaseResultMap" type="com.ai.slp.charge.dao.mapper.bo.ChgChargeLog" >
     <id column="charge_id" property="chargeId" jdbcType="BIGINT" />
     <result column="tenant_id" property="tenantId" jdbcType="VARCHAR" />
     <result column="order_id" property="orderId" jdbcType="VARCHAR" />
@@ -93,7 +93,7 @@
     create_time, status, last_status_date, print_times, op_prov_code, op_city_code, chl_id, 
     oper_id, check_status, check_time, cancel_charge_id, remark
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeLogCriteria" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgChargeLogCriteria" >
     select
     <if test="distinct" >
       distinct
@@ -121,13 +121,13 @@
     delete from chg_charge_log
     where charge_id = #{chargeId,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeLogCriteria" >
+  <delete id="deleteByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgChargeLogCriteria" >
     delete from chg_charge_log
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeLog" >
+  <insert id="insert" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgChargeLog" >
     insert into chg_charge_log (charge_id, tenant_id, order_id, 
       busi_type, busi_oper_code, pay_channel, 
       batch_code, total_fee, discount_fee, 
@@ -147,7 +147,7 @@
       #{operId,jdbcType=VARCHAR}, #{checkStatus,jdbcType=INTEGER}, #{checkTime,jdbcType=TIMESTAMP}, 
       #{cancelChargeId,jdbcType=BIGINT}, #{remark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeLog" >
+  <insert id="insertSelective" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgChargeLog" >
     insert into chg_charge_log
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="chargeId != null" >
@@ -310,7 +310,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeLogCriteria" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgChargeLogCriteria" resultType="java.lang.Integer" >
     select count(*) from chg_charge_log
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -434,7 +434,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeLog" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgChargeLog" >
     update chg_charge_log
     <set >
       <if test="tenantId != null" >
@@ -515,7 +515,7 @@
     </set>
     where charge_id = #{chargeId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ai.runner.center.charge.dao.mapper.bo.ChgChargeLog" >
+  <update id="updateByPrimaryKey" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgChargeLog" >
     update chg_charge_log
     set tenant_id = #{tenantId,jdbcType=VARCHAR},
       order_id = #{orderId,jdbcType=VARCHAR},
