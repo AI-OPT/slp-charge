@@ -23,11 +23,12 @@
     </bean>
 
 	<!-- 配置数据源 -->
-	<bean id="dataSource" class="com.ai.runner.sdk.datasource.RunnerHikariDataSource">
-		<constructor-arg name="dataSourceName" value="charge-center-db" />
+	
+	<bean id="dataSource" class="com.ai.opt.sdk.datasource.OptHikariDataSource">
+		 <constructor-arg name="dataSourceName" value="slp-charge-db"/>
 	</bean>
 	<bean id="seqDataSourceLoader"
-		class="com.ai.runner.sdk.sequence.normal.datasource.SeqDataSourceLoader"
+		class="com.ai.opt.sdk.components.sequence.datasource.SeqDataSourceLoader"
 		init-method="init">
 		<property name="ds" ref="dataSource" />
 	</bean>    

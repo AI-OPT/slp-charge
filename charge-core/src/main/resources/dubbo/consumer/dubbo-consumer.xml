@@ -24,6 +24,6 @@
 
 	<!-- <dubbo:consumer timeout="${dubbo.consoumer.timeout}" /> -->
 
-	<dubbo:reference id="IGnSubjectQuerySV"
-		interface="com.ai.slp.common.api.subject.interfaces.IGnSubjectQuerySV" />
+	<!-- dubbo:reference id="IGnSubjectQuerySV"
+		interface="com.ai.slp.common.api.subject.interfaces.IGnSubjectQuerySV" / -->
 </beans>
