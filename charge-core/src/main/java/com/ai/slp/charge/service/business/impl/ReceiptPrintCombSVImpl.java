@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ai.opt.base.exception.BusinessException;
 import com.ai.opt.sdk.util.BeanUtils;
 import com.ai.opt.sdk.util.DateUtil;
-import com.ai.runner.base.exception.BusinessException;
 import com.ai.slp.charge.api.receipt.param.ReceiptPrintLog;
 import com.ai.slp.charge.dao.mapper.bo.AccReceiptPrintLog;
 import com.ai.slp.charge.service.atom.interfaces.IAccReceiptPrintLogSV;

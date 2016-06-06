@@ -5,9 +5,9 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.ai.opt.base.exception.BusinessException;
+import com.ai.opt.base.exception.SystemException;
 import com.ai.opt.sdk.util.StringUtil;
-import com.ai.runner.base.exception.BusinessException;
-import com.ai.runner.base.exception.CallerException;
 import com.ai.slp.charge.api.payment.interfaces.IPaymentSV;
 import com.ai.slp.charge.api.payment.param.PaymentParam;
 import com.ai.slp.charge.constants.ExceptCodeConstants;
@@ -32,7 +32,7 @@ public class PaymentSVImpl implements IPaymentSV {
     private IPaymentManagerSV paymentManagerSV;
 
     @Override
-    public long payment(PaymentParam paymentParam) throws CallerException {
+    public long payment(PaymentParam paymentParam) throws BusinessException,SystemException {
         LOG.info("开始创建收费记录");
         if (paymentParam == null) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:收费记录创建入参不能为空");

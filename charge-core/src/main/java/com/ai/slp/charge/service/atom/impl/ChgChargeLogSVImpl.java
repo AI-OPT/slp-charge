@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.ai.opt.base.vo.PageInfo;
 import com.ai.opt.sdk.util.CollectionUtil;
-import com.ai.runner.base.vo.PageInfo;
 import com.ai.slp.charge.api.paymentquery.param.ChargeInfoQueryByAcctIdParam;
 import com.ai.slp.charge.api.paymentquery.param.ChargeInfoQueryByCustIdParam;
 import com.ai.slp.charge.dao.mapper.bo.ChgChargeLog;

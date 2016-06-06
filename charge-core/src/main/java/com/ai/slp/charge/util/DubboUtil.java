@@ -1,8 +1,8 @@
 package com.ai.slp.charge.util;
 
+import com.ai.opt.base.exception.SystemException;
 import com.ai.opt.sdk.dubbo.util.DubboConsumerFactory;
-import com.ai.runner.base.exception.SystemException;
-import com.ai.runner.center.common.api.subject.interfaces.IGnSubjectQuerySV;
+import com.ai.slp.common.api.subject.interfaces.IGnSubjectQuerySV;
 
 /**
  * dubbo服务消费工具类

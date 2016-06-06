@@ -5,10 +5,10 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.ai.opt.base.exception.BusinessException;
+import com.ai.opt.base.exception.SystemException;
 import com.ai.opt.sdk.util.DateUtil;
 import com.ai.opt.sdk.util.StringUtil;
-import com.ai.runner.base.exception.BusinessException;
-import com.ai.runner.base.exception.CallerException;
 import com.ai.slp.charge.api.invoice.interfaces.IInvoicePrintSV;
 import com.ai.slp.charge.api.invoice.param.InvoiceTax;
 import com.ai.slp.charge.api.invoice.param.InvoiceTaxQryParam;
@@ -39,7 +39,7 @@ public class InvoicePrintSVImpl implements IInvoicePrintSV {
      * 发票税率查询
      */
     @Override
-    public InvoiceTax queryInvoiceTax(InvoiceTaxQryParam param) throws CallerException {
+    public InvoiceTax queryInvoiceTax(InvoiceTaxQryParam param) throws BusinessException,SystemException {
         LOG.info("发票税率查询开始");
         if (param == null) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:发票税率查询入参不能为空");
@@ -65,7 +65,7 @@ public class InvoicePrintSVImpl implements IInvoicePrintSV {
      */
     @Override
     public OrderInvoicePrintDetail queryOrderInvoicePrintDetail(OrderInvoicePrintReq req)
-            throws CallerException {
+            throws BusinessException,SystemException {
         if (req == null) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:订单发票打印请求报文体不能为空");
         }
@@ -85,7 +85,7 @@ public class InvoicePrintSVImpl implements IInvoicePrintSV {
      * 记录增值税发票打印日志
      */
     @Override
-    public void saveTaxPrintLog(TaxPrintLog log) throws CallerException {
+    public void saveTaxPrintLog(TaxPrintLog log) throws BusinessException,SystemException {
         LOG.info("保存增值税发票打印记录开始");
         if (log == null) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:订单发票打印请求报文体不能为空");

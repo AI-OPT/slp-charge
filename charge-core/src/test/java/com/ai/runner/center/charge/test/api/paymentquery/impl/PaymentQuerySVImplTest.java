@@ -14,9 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ai.opt.base.exception.BusinessException;
+import com.ai.opt.base.vo.PageInfo;
 import com.ai.opt.sdk.util.DateUtil;
-import com.ai.runner.base.exception.CallerException;
-import com.ai.runner.base.vo.PageInfo;
 import com.ai.slp.charge.api.paymentquery.interfaces.IPaymentQuerySV;
 import com.ai.slp.charge.api.paymentquery.param.ChargeBaseInfo;
 import com.ai.slp.charge.api.paymentquery.param.ChargeIdParam;
@@ -74,7 +74,7 @@ public class PaymentQuerySVImplTest {
      * @author fanpw
      * @ApiDocMethod
      */
-    @Test(expected = CallerException.class)
+    @Test(expected = BusinessException.class)
     public void testQueryChargeInfoByChargeIdCase2() {           
         ChargeIdParam param = new ChargeIdParam();
         param.setTenantId("1");   

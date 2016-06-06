@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ai.runner.base.exception.CallerException;
+import com.ai.opt.base.exception.BusinessException;
 import com.ai.slp.charge.api.payment.interfaces.IPaymentSV;
 import com.ai.slp.charge.api.payment.param.ChargeDetail;
 import com.ai.slp.charge.api.payment.param.PayTypeDetail;
@@ -146,7 +146,7 @@ public class PaymentSVImplTest {
      * @author fanpw
      * @ApiDocMethod
      */
-    @Test(expected = CallerException.class)
+    @Test(expected = BusinessException.class)
     public void testPaymentCase3() {
         PaymentParam paymentParam = new PaymentParam();
         paymentParam.setTenantId("1");
@@ -175,7 +175,7 @@ public class PaymentSVImplTest {
      * @author fanpw
      * @ApiDocMethod
      */
-    @Test(expected = CallerException.class)
+    @Test(expected = BusinessException.class)
     public void testPaymentCase4() {
         PaymentParam paymentParam = new PaymentParam();
         paymentParam.setTenantId("1");
@@ -221,7 +221,7 @@ public class PaymentSVImplTest {
      * @author fanpw
      * @ApiDocMethod
      */
-    @Test(expected = CallerException.class)
+    @Test(expected = BusinessException.class)
     public void testPaymentCase5() {
         PaymentParam paymentParam = new PaymentParam();
         paymentParam.setTenantId("1");

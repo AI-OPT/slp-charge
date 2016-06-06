@@ -5,10 +5,10 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.ai.opt.base.exception.BusinessException;
+import com.ai.opt.base.exception.SystemException;
 import com.ai.opt.sdk.util.DateUtil;
 import com.ai.opt.sdk.util.StringUtil;
-import com.ai.runner.base.exception.BusinessException;
-import com.ai.runner.base.exception.CallerException;
 import com.ai.slp.charge.api.receipt.interfaces.IReceiptPrintSV;
 import com.ai.slp.charge.api.receipt.param.ReceiptPrintLog;
 import com.ai.slp.charge.constants.ExceptCodeConstants;
@@ -32,7 +32,7 @@ public class ReceiptPrintSVImpl implements IReceiptPrintSV {
     private IReceiptPrintCombSV receiptPrintCombSV;
     
     @Override
-    public void saveReceiptPrintLog(ReceiptPrintLog log) throws CallerException {
+    public void saveReceiptPrintLog(ReceiptPrintLog log) throws BusinessException,SystemException {
         LOG.info("保存收据打印记录开始");
         if (log == null) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:收据打印记录参数不能为空");

@@ -1,11 +1,11 @@
 package com.ai.slp.charge.util;
 
 import com.ai.opt.sdk.util.BeanUtils;
-import com.ai.runner.center.common.api.subject.param.Subject;
-import com.ai.runner.center.common.api.subject.param.SubjectFund;
-import com.ai.runner.center.common.api.subject.param.SubjectIdParam;
 import com.ai.slp.charge.vo.SubjectFundVo;
 import com.ai.slp.charge.vo.SubjectVo;
+import com.ai.slp.common.api.subject.param.Subject;
+import com.ai.slp.common.api.subject.param.SubjectFund;
+import com.ai.slp.common.api.subject.param.SubjectIdParam;
 
 
 /**

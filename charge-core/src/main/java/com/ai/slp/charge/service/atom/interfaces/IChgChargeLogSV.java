@@ -1,6 +1,6 @@
 package com.ai.slp.charge.service.atom.interfaces;
 
-import com.ai.runner.base.vo.PageInfo;
+import com.ai.opt.base.vo.PageInfo;
 import com.ai.slp.charge.api.paymentquery.param.ChargeInfoQueryByAcctIdParam;
 import com.ai.slp.charge.api.paymentquery.param.ChargeInfoQueryByCustIdParam;
 import com.ai.slp.charge.dao.mapper.bo.ChgChargeLog;

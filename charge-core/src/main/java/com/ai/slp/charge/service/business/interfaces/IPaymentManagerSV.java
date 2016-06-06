@@ -1,6 +1,6 @@
 package com.ai.slp.charge.service.business.interfaces;
 
-import com.ai.runner.base.exception.BusinessException;
+import com.ai.opt.base.exception.BusinessException;
 import com.ai.slp.charge.api.payment.param.PaymentParam;
 
 /**

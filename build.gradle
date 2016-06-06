@@ -46,8 +46,8 @@ subprojects {
             resources { srcDirs = ['src/test/resources']}
         }
     }
-
-    dependencies { compile "com.ai.runner:runner-base:${runnerBaseVersion}" }
+	
+	dependencies { compile "com.ai.opt:opt-base:1.0-SNAPSHOT" }
 }
 
 project("charge-api") {

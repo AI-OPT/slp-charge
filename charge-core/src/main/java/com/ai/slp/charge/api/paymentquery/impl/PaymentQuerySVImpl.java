@@ -7,10 +7,10 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.ai.opt.base.exception.BusinessException;
+import com.ai.opt.base.exception.SystemException;
+import com.ai.opt.base.vo.PageInfo;
 import com.ai.opt.sdk.util.StringUtil;
-import com.ai.runner.base.exception.BusinessException;
-import com.ai.runner.base.exception.CallerException;
-import com.ai.runner.base.vo.PageInfo;
 import com.ai.slp.charge.api.paymentquery.interfaces.IPaymentQuerySV;
 import com.ai.slp.charge.api.paymentquery.param.ChargeBaseInfo;
 import com.ai.slp.charge.api.paymentquery.param.ChargeIdParam;
@@ -41,7 +41,7 @@ public class PaymentQuerySVImpl implements IPaymentQuerySV {
     private IPaymentQueryCombSV paymentQueryCombSV;
     
     @Override
-    public ChargeInfo queryChargeInfoByOrderId(PaymentQryParam param) throws CallerException {
+    public ChargeInfo queryChargeInfoByOrderId(PaymentQryParam param) throws BusinessException,SystemException {
         LOG.info("收费记录查询开始");
         if (param == null) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:收费记录查询入参不能为空");
@@ -62,7 +62,7 @@ public class PaymentQuerySVImpl implements IPaymentQuerySV {
 
     @Override
     public List<ChargePayTypeDetail> queryChargePayTypeDetailsByOrderId(PaymentQryParam param)
-            throws CallerException {
+            throws BusinessException,SystemException {
         LOG.info("收费支付明细列表查询开始");
         if (param == null) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:收费记录查询入参不能为空");
@@ -80,7 +80,7 @@ public class PaymentQuerySVImpl implements IPaymentQuerySV {
     }
     
     @Override
-    public ChargeInfo queryChargeInfoByChargeId(ChargeIdParam param) throws CallerException {
+    public ChargeInfo queryChargeInfoByChargeId(ChargeIdParam param) throws BusinessException,SystemException {
         LOG.info("按收费流水号查询收费记录开始");
         ChargeInfo info = null;
         if (param == null) {
@@ -102,7 +102,7 @@ public class PaymentQuerySVImpl implements IPaymentQuerySV {
 
     @Override
     public List<ChargePayTypeDetail> queryChargePayTypeDetailsByChargeId(ChargeIdParam param)
-            throws CallerException {
+            throws BusinessException,SystemException {
         LOG.info("按收费流水号查询收费支付明细列表开始");
         if (param == null) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:收费记录查询入参不能为空");
@@ -121,7 +121,7 @@ public class PaymentQuerySVImpl implements IPaymentQuerySV {
 
     @Override
     public PageInfo<ChargeBaseInfo> queryChargeBaseInfoByAcctId(ChargeInfoQueryByAcctIdParam param)
-            throws CallerException {
+            throws BusinessException,SystemException {
         LOG.info("按账户ID查询收费记录开始");
         if (param == null) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:收费记录查询入参不能为空");
@@ -152,7 +152,7 @@ public class PaymentQuerySVImpl implements IPaymentQuerySV {
 
     @Override
     public PageInfo<ChargeBaseInfo> queryChargeBaseInfoByCustId(ChargeInfoQueryByCustIdParam param)
-            throws CallerException {
+            throws BusinessException,SystemException {
         LOG.info("按客户ID查询收费记录开始");
         if (param == null) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:收费记录查询入参不能为空");
