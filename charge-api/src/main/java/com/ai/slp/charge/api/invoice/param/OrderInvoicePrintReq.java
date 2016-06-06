@@ -1,6 +1,6 @@
 package com.ai.slp.charge.api.invoice.param;
 
-import com.ai.runner.base.vo.BaseInfo;
+import com.ai.opt.base.vo.BaseInfo;
 
 /**
  * 订单发票打印请求.<br>

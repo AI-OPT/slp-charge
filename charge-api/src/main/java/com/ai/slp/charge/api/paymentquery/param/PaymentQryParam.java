@@ -1,6 +1,6 @@
 package com.ai.slp.charge.api.paymentquery.param;
 
-import com.ai.runner.base.vo.BaseInfo;
+import com.ai.opt.base.vo.BaseInfo;
 
 /**
  * 收费记录查询入参.<br>

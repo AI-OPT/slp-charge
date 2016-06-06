@@ -1,6 +1,7 @@
 package com.ai.slp.charge.api.payment.interfaces;
 
-import com.ai.runner.base.exception.CallerException;
+import com.ai.opt.base.exception.BusinessException;
+import com.ai.opt.base.exception.SystemException;
 import com.ai.slp.charge.api.payment.param.PaymentParam;
 
 /**
@@ -15,10 +16,10 @@ public interface IPaymentSV {
      * 创建收费流水记录<br>
      * @param paymentParam 收费记录创建请求参数
      * @return 收费流水号
-     * @throws CallerException 可能抛出的异常信息
+     * @throws BusinessException,SystemException 可能抛出的异常信息
      * @author fanpw
      * @ApiDocMethod
      * @ApiCode CHG_0001
      */
-    long payment(PaymentParam paymentParam) throws CallerException;
+    long payment(PaymentParam paymentParam) throws BusinessException,SystemException;
 }

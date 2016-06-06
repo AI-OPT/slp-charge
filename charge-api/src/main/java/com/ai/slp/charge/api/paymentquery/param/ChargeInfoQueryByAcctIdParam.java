@@ -2,8 +2,8 @@ package com.ai.slp.charge.api.paymentquery.param;
 
 import java.sql.Timestamp;
 
-import com.ai.runner.base.vo.BaseInfo;
-import com.ai.runner.base.vo.PageInfo;
+import com.ai.opt.base.vo.BaseInfo;
+import com.ai.opt.base.vo.PageInfo;
 
 /**
  * 按账号查询收费流水入参.<br>

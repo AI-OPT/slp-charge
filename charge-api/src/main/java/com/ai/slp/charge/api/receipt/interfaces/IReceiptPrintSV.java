@@ -1,6 +1,7 @@
 package com.ai.slp.charge.api.receipt.interfaces;
 
-import com.ai.runner.base.exception.CallerException;
+import com.ai.opt.base.exception.BusinessException;
+import com.ai.opt.base.exception.SystemException;
 import com.ai.slp.charge.api.receipt.param.ReceiptPrintLog;
 
 /**
@@ -15,11 +16,11 @@ public interface IReceiptPrintSV {
     /**
      * 记录收据打印日志<br>
      * @param log 收据打印记录
-     * @throws CallerException 可能抛出的异常信息
+     * @throws BusinessException,SystemException 可能抛出的异常信息
      * @author fanpw
      * @ApiDocMethod
      * @ApiCode CHG_0033
      */
-    void saveReceiptPrintLog(ReceiptPrintLog log) throws CallerException;
+    void saveReceiptPrintLog(ReceiptPrintLog log) throws BusinessException,SystemException;
     
 }

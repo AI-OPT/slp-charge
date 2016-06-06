@@ -1,6 +1,6 @@
 package com.ai.slp.charge.api.paymentquery.param;
 
-import com.ai.runner.base.vo.BaseInfo;
+import com.ai.opt.base.vo.BaseInfo;
 
 /**
  * 按收费流水号查询收费流水入参.<br>

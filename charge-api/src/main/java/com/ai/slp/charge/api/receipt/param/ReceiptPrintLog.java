@@ -1,7 +1,7 @@
 package com.ai.slp.charge.api.receipt.param;
 
 
-import com.ai.runner.base.vo.BaseInfo;
+import com.ai.opt.base.vo.BaseInfo;
 
 /**
  * 收据打印记录.<br>

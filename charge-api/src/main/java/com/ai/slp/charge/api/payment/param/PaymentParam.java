@@ -2,7 +2,7 @@ package com.ai.slp.charge.api.payment.param;
 
 import java.util.List;
 
-import com.ai.runner.base.vo.BaseInfo;
+import com.ai.opt.base.vo.BaseInfo;
 
 /**
  * 收费记录创建请求参数  <br>

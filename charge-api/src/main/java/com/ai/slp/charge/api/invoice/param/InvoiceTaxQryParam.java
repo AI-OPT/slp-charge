@@ -1,6 +1,6 @@
 package com.ai.slp.charge.api.invoice.param;
 
-import com.ai.runner.base.vo.BaseInfo;
+import com.ai.opt.base.vo.BaseInfo;
 
 /**
  * 发票税率查询入参.<br>
