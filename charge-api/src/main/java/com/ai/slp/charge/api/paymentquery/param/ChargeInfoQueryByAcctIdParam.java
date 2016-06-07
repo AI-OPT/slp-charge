@@ -30,6 +30,22 @@ public class ChargeInfoQueryByAcctIdParam extends BaseInfo {
      * 结束时间
      */
     private Timestamp endTime;
+    
+    /**
+     * 业务类型：<br>
+     * ﻿1、订单收费类<br>
+     * 2、缴费充值类<br>
+     */
+    private String busiType;
+    
+
+    public String getBusiType() {
+        return busiType;
+    }
+
+    public void setBusiType(String busiType) {
+        this.busiType = busiType;
+    }
 
     /**
      * 分页信息

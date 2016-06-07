@@ -12,6 +12,7 @@ import com.ai.slp.charge.dao.mapper.interfaces.AccTaxPrintLogMapper;
 import com.ai.slp.charge.dao.mapper.interfaces.ChgChargeDetailLogMapper;
 import com.ai.slp.charge.dao.mapper.interfaces.ChgChargeLogMapper;
 import com.ai.slp.charge.dao.mapper.interfaces.ChgChargePayTypeLogMapper;
+import com.ai.slp.charge.dao.mapper.interfaces.ChgPayOrderLogMapper;
 
 @Component
 public class MapperFactory {
@@ -91,5 +92,14 @@ public class MapperFactory {
      */
     public static AccTaxPrintLogMapper getAccTaxPrintLogMapper() {
         return sqlSessionTemplate.getMapper(AccTaxPrintLogMapper.class);
+    }
+    /**
+     * 收费订单接口
+     * @return
+     * @author LiangMeng
+     * @ApiDocMethod
+     */
+    public static ChgPayOrderLogMapper getChgPayOrderLogMapper() {
+        return sqlSessionTemplate.getMapper(ChgPayOrderLogMapper.class);
     }
 }

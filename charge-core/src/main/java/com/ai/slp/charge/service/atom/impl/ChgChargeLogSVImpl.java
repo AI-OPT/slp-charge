@@ -69,7 +69,9 @@ public class ChgChargeLogSVImpl implements IChgChargeLogSV {
         if(param.getStartTime() != null) {
             criteria.andCreateTimeGreaterThanOrEqualTo(param.getStartTime());
         }
-        
+        if(param.getBusiType() != null) {
+            criteria.andBusiTypeEqualTo(param.getBusiType());
+        }
         if(param.getEndTime() != null) {
             criteria.andCreateTimeLessThanOrEqualTo(param.getEndTime());
         }
