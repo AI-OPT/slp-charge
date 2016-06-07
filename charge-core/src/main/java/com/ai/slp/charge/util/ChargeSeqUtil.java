@@ -44,5 +44,13 @@ public final class ChargeSeqUtil {
     public static Long createChargePayTypeId() {
         return SeqUtil.getNewId("CHARGE_PAY_TYPE_LOG$TYPE_ID$SEQ");
     }
-    
+    /**
+     * 获取缴费订单ID
+     * @return
+     * @author LiangMeng
+     * @ApiDocMethod
+     */
+    public static Long createPayOrderId() {
+        return SeqUtil.getNewId("PAY_ORDER_LOG$ORDER_ID$SEQ");
+    }
 }

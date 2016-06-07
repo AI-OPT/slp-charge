@@ -21,15 +21,15 @@
     </Async>
   </Appenders>
   <Loggers>
-    <logger name="com.ai.runner.utils" level="info" additivity="false">
+    <logger name="com.ai.slp" level="info" additivity="false">
          <AppenderRef ref="RollingFile" />
          <AppenderRef ref="STDOUT" />
     </logger>
-    <logger name="com.ai.runner.sdk" level="info" additivity="false">
+    <logger name="com.ai.slp.sdk" level="info" additivity="false">
          <AppenderRef ref="RollingFile" />
          <AppenderRef ref="STDOUT" />
     </logger>
-    <Root level="error">
+    <Root level="info">
       <AppenderRef ref="RollingFile" />
       <AppenderRef ref="STDOUT" />
     </Root>

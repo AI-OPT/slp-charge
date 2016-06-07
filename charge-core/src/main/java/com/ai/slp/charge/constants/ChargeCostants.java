@@ -101,6 +101,7 @@ public final class ChargeCostants {
             
         }
         
+        
         /**
          * 打印次数
          * Date: 2015年8月13日 <br>
@@ -136,6 +137,55 @@ public final class ChargeCostants {
         }
         
     }
+    /**
+     * 支付流水
+     * Date: 2016年6月7日 <br>
+     * Copyright (c) 2016 asiainfo.com <br>
+     * 
+     * @author LiangMeng
+     */
+    public static final class PayOrderLog {
+        
+        private PayOrderLog() {
+            
+        }
+        /**
+         * 支付状态
+         * Date: 2016年6月7日 <br>
+         * Copyright (c) 2016 asiainfo.com <br>
+         * 
+         * @author LiangMeng
+         */
+        public static final class Status {
+            
+            private Status() {
+                
+            }
+            //初始化
+            public static final int INIT  = 0;
+            //去支付
+            public static final int GO_TO_PAY  = 1;
+            //支付成功
+            public static final int PAY_SUCCESS  = 2;
+            //支付失败
+            public static final int PAY_FAILD  = 4;
+            //支付成功存款失败
+            public static final int PAY_SUCCESS_DEPOSIT_FAILD  = 6;
+        }
+        
+        public static final class CheckStatus {
+            
+            private CheckStatus() {
+                
+            }
+            //初始化
+            public static final int INIT  = 0;
+            //已对账
+            public static final int HAS_CHECKED  = 1;
+            
+        }
+    }
+    
     
     /**
      * 租户常量定义
