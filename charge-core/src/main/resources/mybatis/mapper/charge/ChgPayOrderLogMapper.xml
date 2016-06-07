@@ -1,40 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ai.slp.charge.dao.mapper.interfaces.ChgPayOrderLogMapper">
-  <resultMap id="BaseResultMap" type="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
-    <id column="order_id" jdbcType="BIGINT" property="orderId" />
-    <result column="pay_channel" jdbcType="INTEGER" property="payChannel" />
-    <result column="pay_amount" jdbcType="BIGINT" property="payAmount" />
-    <result column="ord_des" jdbcType="VARCHAR" property="ordDes" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="last_status_date" jdbcType="TIMESTAMP" property="lastStatusDate" />
-    <result column="pay_org_id" jdbcType="VARCHAR" property="payOrgId" />
-    <result column="pay_org_serial" jdbcType="VARCHAR" property="payOrgSerial" />
-    <result column="check_status" jdbcType="INTEGER" property="checkStatus" />
-    <result column="check_time" jdbcType="TIMESTAMP" property="checkTime" />
-    <result column="ACCT_ID" jdbcType="VARCHAR" property="acctId" />
-    <result column="CUST_ID" jdbcType="VARCHAR" property="custId" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ai.slp.charge.dao.mapper.interfaces.ChgPayOrderLogMapper" >
+  <resultMap id="BaseResultMap" type="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog" >
+    <id column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="pay_channel" property="payChannel" jdbcType="INTEGER" />
+    <result column="pay_amount" property="payAmount" jdbcType="BIGINT" />
+    <result column="ord_des" property="ordDes" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="last_status_date" property="lastStatusDate" jdbcType="TIMESTAMP" />
+    <result column="pay_org_id" property="payOrgId" jdbcType="VARCHAR" />
+    <result column="pay_org_serial" property="payOrgSerial" jdbcType="VARCHAR" />
+    <result column="check_status" property="checkStatus" jdbcType="INTEGER" />
+    <result column="check_time" property="checkTime" jdbcType="TIMESTAMP" />
+    <result column="ACCT_ID" property="acctId" jdbcType="VARCHAR" />
+    <result column="CUST_ID" property="custId" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -45,25 +45,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -74,45 +74,45 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     order_id, pay_channel, pay_amount, ord_des, create_time, status, last_status_date, 
     pay_org_id, pay_org_serial, check_status, check_time, ACCT_ID, CUST_ID
   </sql>
-  <select id="selectByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLogCriteria" resultMap="BaseResultMap">
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLogCriteria" >
     select
-    <if test="distinct">
+    <if test="distinct" >
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
     from chg_pay_order_log
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null">
+    <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
-    <if test="limitStart != null and limitStart&gt;=0">
+    <if test="limitStart != null and limitStart>=0" >
       limit #{limitStart} , #{limitEnd}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="Long" >
     select 
     <include refid="Base_Column_List" />
     from chg_pay_order_log
     where order_id = #{orderId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="Long">
+  <delete id="deleteByPrimaryKey" parameterType="Long" >
     delete from chg_pay_order_log
     where order_id = #{orderId,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLogCriteria">
+  <delete id="deleteByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLogCriteria" >
     delete from chg_pay_order_log
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
+  <insert id="insert" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog" >
     insert into chg_pay_order_log (order_id, pay_channel, pay_amount, 
       ord_des, create_time, status, 
       last_status_date, pay_org_id, pay_org_serial, 
@@ -124,145 +124,145 @@
       #{checkStatus,jdbcType=INTEGER}, #{checkTime,jdbcType=TIMESTAMP}, #{acctId,jdbcType=VARCHAR}, 
       #{custId,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
+  <insert id="insertSelective" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog" >
     insert into chg_pay_order_log
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
         order_id,
       </if>
-      <if test="payChannel != null">
+      <if test="payChannel != null" >
         pay_channel,
       </if>
-      <if test="payAmount != null">
+      <if test="payAmount != null" >
         pay_amount,
       </if>
-      <if test="ordDes != null">
+      <if test="ordDes != null" >
         ord_des,
       </if>
-      <if test="createTime != null">
+      <if test="createTime != null" >
         create_time,
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         status,
       </if>
-      <if test="lastStatusDate != null">
+      <if test="lastStatusDate != null" >
         last_status_date,
       </if>
-      <if test="payOrgId != null">
+      <if test="payOrgId != null" >
         pay_org_id,
       </if>
-      <if test="payOrgSerial != null">
+      <if test="payOrgSerial != null" >
         pay_org_serial,
       </if>
-      <if test="checkStatus != null">
+      <if test="checkStatus != null" >
         check_status,
       </if>
-      <if test="checkTime != null">
+      <if test="checkTime != null" >
         check_time,
       </if>
-      <if test="acctId != null">
+      <if test="acctId != null" >
         ACCT_ID,
       </if>
-      <if test="custId != null">
+      <if test="custId != null" >
         CUST_ID,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
         #{orderId,jdbcType=BIGINT},
       </if>
-      <if test="payChannel != null">
+      <if test="payChannel != null" >
         #{payChannel,jdbcType=INTEGER},
       </if>
-      <if test="payAmount != null">
+      <if test="payAmount != null" >
         #{payAmount,jdbcType=BIGINT},
       </if>
-      <if test="ordDes != null">
+      <if test="ordDes != null" >
         #{ordDes,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
+      <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="lastStatusDate != null">
+      <if test="lastStatusDate != null" >
         #{lastStatusDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="payOrgId != null">
+      <if test="payOrgId != null" >
         #{payOrgId,jdbcType=VARCHAR},
       </if>
-      <if test="payOrgSerial != null">
+      <if test="payOrgSerial != null" >
         #{payOrgSerial,jdbcType=VARCHAR},
       </if>
-      <if test="checkStatus != null">
+      <if test="checkStatus != null" >
         #{checkStatus,jdbcType=INTEGER},
       </if>
-      <if test="checkTime != null">
+      <if test="checkTime != null" >
         #{checkTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="acctId != null">
+      <if test="acctId != null" >
         #{acctId,jdbcType=VARCHAR},
       </if>
-      <if test="custId != null">
+      <if test="custId != null" >
         #{custId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLogCriteria" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLogCriteria" resultType="java.lang.Integer" >
     select count(*) from chg_pay_order_log
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+  <update id="updateByExampleSelective" parameterType="map" >
     update chg_pay_order_log
-    <set>
-      <if test="record.orderId != null">
+    <set >
+      <if test="record.orderId != null" >
         order_id = #{record.orderId,jdbcType=BIGINT},
       </if>
-      <if test="record.payChannel != null">
+      <if test="record.payChannel != null" >
         pay_channel = #{record.payChannel,jdbcType=INTEGER},
       </if>
-      <if test="record.payAmount != null">
+      <if test="record.payAmount != null" >
         pay_amount = #{record.payAmount,jdbcType=BIGINT},
       </if>
-      <if test="record.ordDes != null">
+      <if test="record.ordDes != null" >
         ord_des = #{record.ordDes,jdbcType=VARCHAR},
       </if>
-      <if test="record.createTime != null">
+      <if test="record.createTime != null" >
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.status != null">
+      <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
       </if>
-      <if test="record.lastStatusDate != null">
+      <if test="record.lastStatusDate != null" >
         last_status_date = #{record.lastStatusDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.payOrgId != null">
+      <if test="record.payOrgId != null" >
         pay_org_id = #{record.payOrgId,jdbcType=VARCHAR},
       </if>
-      <if test="record.payOrgSerial != null">
+      <if test="record.payOrgSerial != null" >
         pay_org_serial = #{record.payOrgSerial,jdbcType=VARCHAR},
       </if>
-      <if test="record.checkStatus != null">
+      <if test="record.checkStatus != null" >
         check_status = #{record.checkStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.checkTime != null">
+      <if test="record.checkTime != null" >
         check_time = #{record.checkTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.acctId != null">
+      <if test="record.acctId != null" >
         ACCT_ID = #{record.acctId,jdbcType=VARCHAR},
       </if>
-      <if test="record.custId != null">
+      <if test="record.custId != null" >
         CUST_ID = #{record.custId,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map">
+  <update id="updateByExample" parameterType="map" >
     update chg_pay_order_log
     set order_id = #{record.orderId,jdbcType=BIGINT},
       pay_channel = #{record.payChannel,jdbcType=INTEGER},
@@ -277,1067 +277,53 @@
       check_time = #{record.checkTime,jdbcType=TIMESTAMP},
       ACCT_ID = #{record.acctId,jdbcType=VARCHAR},
       CUST_ID = #{record.custId,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
+  <update id="updateByPrimaryKeySelective" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog" >
     update chg_pay_order_log
-    <set>
-      <if test="payChannel != null">
+    <set >
+      <if test="payChannel != null" >
         pay_channel = #{payChannel,jdbcType=INTEGER},
       </if>
-      <if test="payAmount != null">
+      <if test="payAmount != null" >
         pay_amount = #{payAmount,jdbcType=BIGINT},
       </if>
-      <if test="ordDes != null">
+      <if test="ordDes != null" >
         ord_des = #{ordDes,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
+      <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="status != null">
+      <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="lastStatusDate != null">
+      <if test="lastStatusDate != null" >
         last_status_date = #{lastStatusDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="payOrgId != null">
+      <if test="payOrgId != null" >
         pay_org_id = #{payOrgId,jdbcType=VARCHAR},
       </if>
-      <if test="payOrgSerial != null">
+      <if test="payOrgSerial != null" >
         pay_org_serial = #{payOrgSerial,jdbcType=VARCHAR},
       </if>
-      <if test="checkStatus != null">
+      <if test="checkStatus != null" >
         check_status = #{checkStatus,jdbcType=INTEGER},
       </if>
-      <if test="checkTime != null">
+      <if test="checkTime != null" >
         check_time = #{checkTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="acctId != null">
+      <if test="acctId != null" >
         ACCT_ID = #{acctId,jdbcType=VARCHAR},
       </if>
-      <if test="custId != null">
+      <if test="custId != null" >
         CUST_ID = #{custId,jdbcType=VARCHAR},
       </if>
     </set>
     where order_id = #{orderId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
-    update chg_pay_order_log
-    set pay_channel = #{payChannel,jdbcType=INTEGER},
-      pay_amount = #{payAmount,jdbcType=BIGINT},
-      ord_des = #{ordDes,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=INTEGER},
-      last_status_date = #{lastStatusDate,jdbcType=TIMESTAMP},
-      pay_org_id = #{payOrgId,jdbcType=VARCHAR},
-      pay_org_serial = #{payOrgSerial,jdbcType=VARCHAR},
-      check_status = #{checkStatus,jdbcType=INTEGER},
-      check_time = #{checkTime,jdbcType=TIMESTAMP},
-      ACCT_ID = #{acctId,jdbcType=VARCHAR},
-      CUST_ID = #{custId,jdbcType=VARCHAR}
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
-    <id column="order_id" jdbcType="BIGINT" property="orderId" />
-    <result column="pay_channel" jdbcType="INTEGER" property="payChannel" />
-    <result column="pay_amount" jdbcType="BIGINT" property="payAmount" />
-    <result column="ord_des" jdbcType="VARCHAR" property="ordDes" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="last_status_date" jdbcType="TIMESTAMP" property="lastStatusDate" />
-    <result column="pay_org_id" jdbcType="VARCHAR" property="payOrgId" />
-    <result column="pay_org_serial" jdbcType="VARCHAR" property="payOrgSerial" />
-    <result column="check_status" jdbcType="INTEGER" property="checkStatus" />
-    <result column="check_time" jdbcType="TIMESTAMP" property="checkTime" />
-    <result column="ACCT_ID" jdbcType="VARCHAR" property="acctId" />
-    <result column="CUST_ID" jdbcType="VARCHAR" property="custId" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    order_id, pay_channel, pay_amount, ord_des, create_time, status, last_status_date, 
-    pay_org_id, pay_org_serial, check_status, check_time, ACCT_ID, CUST_ID
-  </sql>
-  <select id="selectByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLogCriteria" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    'true' as QUERYID,
-    <include refid="Base_Column_List" />
-    from chg_pay_order_log
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-    <if test="limitStart != null and limitStart&gt;=0">
-      limit #{limitStart} , #{limitEnd}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from chg_pay_order_log
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="Long">
-    delete from chg_pay_order_log
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLogCriteria">
-    delete from chg_pay_order_log
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
-    insert into chg_pay_order_log (order_id, pay_channel, pay_amount, 
-      ord_des, create_time, status, 
-      last_status_date, pay_org_id, pay_org_serial, 
-      check_status, check_time, ACCT_ID, 
-      CUST_ID)
-    values (#{orderId,jdbcType=BIGINT}, #{payChannel,jdbcType=INTEGER}, #{payAmount,jdbcType=BIGINT}, 
-      #{ordDes,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
-      #{lastStatusDate,jdbcType=TIMESTAMP}, #{payOrgId,jdbcType=VARCHAR}, #{payOrgSerial,jdbcType=VARCHAR}, 
-      #{checkStatus,jdbcType=INTEGER}, #{checkTime,jdbcType=TIMESTAMP}, #{acctId,jdbcType=VARCHAR}, 
-      #{custId,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
-    insert into chg_pay_order_log
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
-        order_id,
-      </if>
-      <if test="payChannel != null">
-        pay_channel,
-      </if>
-      <if test="payAmount != null">
-        pay_amount,
-      </if>
-      <if test="ordDes != null">
-        ord_des,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="lastStatusDate != null">
-        last_status_date,
-      </if>
-      <if test="payOrgId != null">
-        pay_org_id,
-      </if>
-      <if test="payOrgSerial != null">
-        pay_org_serial,
-      </if>
-      <if test="checkStatus != null">
-        check_status,
-      </if>
-      <if test="checkTime != null">
-        check_time,
-      </if>
-      <if test="acctId != null">
-        ACCT_ID,
-      </if>
-      <if test="custId != null">
-        CUST_ID,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
-        #{orderId,jdbcType=BIGINT},
-      </if>
-      <if test="payChannel != null">
-        #{payChannel,jdbcType=INTEGER},
-      </if>
-      <if test="payAmount != null">
-        #{payAmount,jdbcType=BIGINT},
-      </if>
-      <if test="ordDes != null">
-        #{ordDes,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="lastStatusDate != null">
-        #{lastStatusDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="payOrgId != null">
-        #{payOrgId,jdbcType=VARCHAR},
-      </if>
-      <if test="payOrgSerial != null">
-        #{payOrgSerial,jdbcType=VARCHAR},
-      </if>
-      <if test="checkStatus != null">
-        #{checkStatus,jdbcType=INTEGER},
-      </if>
-      <if test="checkTime != null">
-        #{checkTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="acctId != null">
-        #{acctId,jdbcType=VARCHAR},
-      </if>
-      <if test="custId != null">
-        #{custId,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLogCriteria" resultType="java.lang.Integer">
-    select count(*) from chg_pay_order_log
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update chg_pay_order_log
-    <set>
-      <if test="record.orderId != null">
-        order_id = #{record.orderId,jdbcType=BIGINT},
-      </if>
-      <if test="record.payChannel != null">
-        pay_channel = #{record.payChannel,jdbcType=INTEGER},
-      </if>
-      <if test="record.payAmount != null">
-        pay_amount = #{record.payAmount,jdbcType=BIGINT},
-      </if>
-      <if test="record.ordDes != null">
-        ord_des = #{record.ordDes,jdbcType=VARCHAR},
-      </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.status != null">
-        status = #{record.status,jdbcType=INTEGER},
-      </if>
-      <if test="record.lastStatusDate != null">
-        last_status_date = #{record.lastStatusDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.payOrgId != null">
-        pay_org_id = #{record.payOrgId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.payOrgSerial != null">
-        pay_org_serial = #{record.payOrgSerial,jdbcType=VARCHAR},
-      </if>
-      <if test="record.checkStatus != null">
-        check_status = #{record.checkStatus,jdbcType=INTEGER},
-      </if>
-      <if test="record.checkTime != null">
-        check_time = #{record.checkTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.acctId != null">
-        ACCT_ID = #{record.acctId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.custId != null">
-        CUST_ID = #{record.custId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update chg_pay_order_log
-    set order_id = #{record.orderId,jdbcType=BIGINT},
-      pay_channel = #{record.payChannel,jdbcType=INTEGER},
-      pay_amount = #{record.payAmount,jdbcType=BIGINT},
-      ord_des = #{record.ordDes,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      status = #{record.status,jdbcType=INTEGER},
-      last_status_date = #{record.lastStatusDate,jdbcType=TIMESTAMP},
-      pay_org_id = #{record.payOrgId,jdbcType=VARCHAR},
-      pay_org_serial = #{record.payOrgSerial,jdbcType=VARCHAR},
-      check_status = #{record.checkStatus,jdbcType=INTEGER},
-      check_time = #{record.checkTime,jdbcType=TIMESTAMP},
-      ACCT_ID = #{record.acctId,jdbcType=VARCHAR},
-      CUST_ID = #{record.custId,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
-    update chg_pay_order_log
-    <set>
-      <if test="payChannel != null">
-        pay_channel = #{payChannel,jdbcType=INTEGER},
-      </if>
-      <if test="payAmount != null">
-        pay_amount = #{payAmount,jdbcType=BIGINT},
-      </if>
-      <if test="ordDes != null">
-        ord_des = #{ordDes,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        status = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="lastStatusDate != null">
-        last_status_date = #{lastStatusDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="payOrgId != null">
-        pay_org_id = #{payOrgId,jdbcType=VARCHAR},
-      </if>
-      <if test="payOrgSerial != null">
-        pay_org_serial = #{payOrgSerial,jdbcType=VARCHAR},
-      </if>
-      <if test="checkStatus != null">
-        check_status = #{checkStatus,jdbcType=INTEGER},
-      </if>
-      <if test="checkTime != null">
-        check_time = #{checkTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="acctId != null">
-        ACCT_ID = #{acctId,jdbcType=VARCHAR},
-      </if>
-      <if test="custId != null">
-        CUST_ID = #{custId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
-    update chg_pay_order_log
-    set pay_channel = #{payChannel,jdbcType=INTEGER},
-      pay_amount = #{payAmount,jdbcType=BIGINT},
-      ord_des = #{ordDes,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=INTEGER},
-      last_status_date = #{lastStatusDate,jdbcType=TIMESTAMP},
-      pay_org_id = #{payOrgId,jdbcType=VARCHAR},
-      pay_org_serial = #{payOrgSerial,jdbcType=VARCHAR},
-      check_status = #{checkStatus,jdbcType=INTEGER},
-      check_time = #{checkTime,jdbcType=TIMESTAMP},
-      ACCT_ID = #{acctId,jdbcType=VARCHAR},
-      CUST_ID = #{custId,jdbcType=VARCHAR}
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
-    <id column="order_id" jdbcType="BIGINT" property="orderId" />
-    <result column="pay_channel" jdbcType="INTEGER" property="payChannel" />
-    <result column="pay_amount" jdbcType="BIGINT" property="payAmount" />
-    <result column="ord_des" jdbcType="VARCHAR" property="ordDes" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="last_status_date" jdbcType="TIMESTAMP" property="lastStatusDate" />
-    <result column="pay_org_id" jdbcType="VARCHAR" property="payOrgId" />
-    <result column="pay_org_serial" jdbcType="VARCHAR" property="payOrgSerial" />
-    <result column="check_status" jdbcType="INTEGER" property="checkStatus" />
-    <result column="check_time" jdbcType="TIMESTAMP" property="checkTime" />
-    <result column="ACCT_ID" jdbcType="VARCHAR" property="acctId" />
-    <result column="CUST_ID" jdbcType="VARCHAR" property="custId" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    order_id, pay_channel, pay_amount, ord_des, create_time, status, last_status_date, 
-    pay_org_id, pay_org_serial, check_status, check_time, ACCT_ID, CUST_ID
-  </sql>
-  <select id="selectByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLogCriteria" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    'true' as QUERYID,
-    <include refid="Base_Column_List" />
-    from chg_pay_order_log
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-    <if test="limitStart != null and limitStart&gt;=0">
-      limit #{limitStart} , #{limitEnd}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from chg_pay_order_log
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="Long">
-    delete from chg_pay_order_log
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLogCriteria">
-    delete from chg_pay_order_log
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
-    insert into chg_pay_order_log (order_id, pay_channel, pay_amount, 
-      ord_des, create_time, status, 
-      last_status_date, pay_org_id, pay_org_serial, 
-      check_status, check_time, ACCT_ID, 
-      CUST_ID)
-    values (#{orderId,jdbcType=BIGINT}, #{payChannel,jdbcType=INTEGER}, #{payAmount,jdbcType=BIGINT}, 
-      #{ordDes,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
-      #{lastStatusDate,jdbcType=TIMESTAMP}, #{payOrgId,jdbcType=VARCHAR}, #{payOrgSerial,jdbcType=VARCHAR}, 
-      #{checkStatus,jdbcType=INTEGER}, #{checkTime,jdbcType=TIMESTAMP}, #{acctId,jdbcType=VARCHAR}, 
-      #{custId,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
-    insert into chg_pay_order_log
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
-        order_id,
-      </if>
-      <if test="payChannel != null">
-        pay_channel,
-      </if>
-      <if test="payAmount != null">
-        pay_amount,
-      </if>
-      <if test="ordDes != null">
-        ord_des,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="lastStatusDate != null">
-        last_status_date,
-      </if>
-      <if test="payOrgId != null">
-        pay_org_id,
-      </if>
-      <if test="payOrgSerial != null">
-        pay_org_serial,
-      </if>
-      <if test="checkStatus != null">
-        check_status,
-      </if>
-      <if test="checkTime != null">
-        check_time,
-      </if>
-      <if test="acctId != null">
-        ACCT_ID,
-      </if>
-      <if test="custId != null">
-        CUST_ID,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
-        #{orderId,jdbcType=BIGINT},
-      </if>
-      <if test="payChannel != null">
-        #{payChannel,jdbcType=INTEGER},
-      </if>
-      <if test="payAmount != null">
-        #{payAmount,jdbcType=BIGINT},
-      </if>
-      <if test="ordDes != null">
-        #{ordDes,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="lastStatusDate != null">
-        #{lastStatusDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="payOrgId != null">
-        #{payOrgId,jdbcType=VARCHAR},
-      </if>
-      <if test="payOrgSerial != null">
-        #{payOrgSerial,jdbcType=VARCHAR},
-      </if>
-      <if test="checkStatus != null">
-        #{checkStatus,jdbcType=INTEGER},
-      </if>
-      <if test="checkTime != null">
-        #{checkTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="acctId != null">
-        #{acctId,jdbcType=VARCHAR},
-      </if>
-      <if test="custId != null">
-        #{custId,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLogCriteria" resultType="java.lang.Integer">
-    select count(*) from chg_pay_order_log
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update chg_pay_order_log
-    <set>
-      <if test="record.orderId != null">
-        order_id = #{record.orderId,jdbcType=BIGINT},
-      </if>
-      <if test="record.payChannel != null">
-        pay_channel = #{record.payChannel,jdbcType=INTEGER},
-      </if>
-      <if test="record.payAmount != null">
-        pay_amount = #{record.payAmount,jdbcType=BIGINT},
-      </if>
-      <if test="record.ordDes != null">
-        ord_des = #{record.ordDes,jdbcType=VARCHAR},
-      </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.status != null">
-        status = #{record.status,jdbcType=INTEGER},
-      </if>
-      <if test="record.lastStatusDate != null">
-        last_status_date = #{record.lastStatusDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.payOrgId != null">
-        pay_org_id = #{record.payOrgId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.payOrgSerial != null">
-        pay_org_serial = #{record.payOrgSerial,jdbcType=VARCHAR},
-      </if>
-      <if test="record.checkStatus != null">
-        check_status = #{record.checkStatus,jdbcType=INTEGER},
-      </if>
-      <if test="record.checkTime != null">
-        check_time = #{record.checkTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.acctId != null">
-        ACCT_ID = #{record.acctId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.custId != null">
-        CUST_ID = #{record.custId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update chg_pay_order_log
-    set order_id = #{record.orderId,jdbcType=BIGINT},
-      pay_channel = #{record.payChannel,jdbcType=INTEGER},
-      pay_amount = #{record.payAmount,jdbcType=BIGINT},
-      ord_des = #{record.ordDes,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      status = #{record.status,jdbcType=INTEGER},
-      last_status_date = #{record.lastStatusDate,jdbcType=TIMESTAMP},
-      pay_org_id = #{record.payOrgId,jdbcType=VARCHAR},
-      pay_org_serial = #{record.payOrgSerial,jdbcType=VARCHAR},
-      check_status = #{record.checkStatus,jdbcType=INTEGER},
-      check_time = #{record.checkTime,jdbcType=TIMESTAMP},
-      ACCT_ID = #{record.acctId,jdbcType=VARCHAR},
-      CUST_ID = #{record.custId,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
-    update chg_pay_order_log
-    <set>
-      <if test="payChannel != null">
-        pay_channel = #{payChannel,jdbcType=INTEGER},
-      </if>
-      <if test="payAmount != null">
-        pay_amount = #{payAmount,jdbcType=BIGINT},
-      </if>
-      <if test="ordDes != null">
-        ord_des = #{ordDes,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        status = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="lastStatusDate != null">
-        last_status_date = #{lastStatusDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="payOrgId != null">
-        pay_org_id = #{payOrgId,jdbcType=VARCHAR},
-      </if>
-      <if test="payOrgSerial != null">
-        pay_org_serial = #{payOrgSerial,jdbcType=VARCHAR},
-      </if>
-      <if test="checkStatus != null">
-        check_status = #{checkStatus,jdbcType=INTEGER},
-      </if>
-      <if test="checkTime != null">
-        check_time = #{checkTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="acctId != null">
-        ACCT_ID = #{acctId,jdbcType=VARCHAR},
-      </if>
-      <if test="custId != null">
-        CUST_ID = #{custId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
-    update chg_pay_order_log
-    set pay_channel = #{payChannel,jdbcType=INTEGER},
-      pay_amount = #{payAmount,jdbcType=BIGINT},
-      ord_des = #{ordDes,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=INTEGER},
-      last_status_date = #{lastStatusDate,jdbcType=TIMESTAMP},
-      pay_org_id = #{payOrgId,jdbcType=VARCHAR},
-      pay_org_serial = #{payOrgSerial,jdbcType=VARCHAR},
-      check_status = #{checkStatus,jdbcType=INTEGER},
-      check_time = #{checkTime,jdbcType=TIMESTAMP},
-      ACCT_ID = #{acctId,jdbcType=VARCHAR},
-      CUST_ID = #{custId,jdbcType=VARCHAR}
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </update>
-  <resultMap id="BaseResultMap" type="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
-    <id column="order_id" jdbcType="BIGINT" property="orderId" />
-    <result column="pay_channel" jdbcType="INTEGER" property="payChannel" />
-    <result column="pay_amount" jdbcType="BIGINT" property="payAmount" />
-    <result column="ord_des" jdbcType="VARCHAR" property="ordDes" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="last_status_date" jdbcType="TIMESTAMP" property="lastStatusDate" />
-    <result column="pay_org_id" jdbcType="VARCHAR" property="payOrgId" />
-    <result column="pay_org_serial" jdbcType="VARCHAR" property="payOrgSerial" />
-    <result column="check_status" jdbcType="INTEGER" property="checkStatus" />
-    <result column="check_time" jdbcType="TIMESTAMP" property="checkTime" />
-    <result column="ACCT_ID" jdbcType="VARCHAR" property="acctId" />
-    <result column="CUST_ID" jdbcType="VARCHAR" property="custId" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    order_id, pay_channel, pay_amount, ord_des, create_time, status, last_status_date, 
-    pay_org_id, pay_org_serial, check_status, check_time, ACCT_ID, CUST_ID
-  </sql>
-  <select id="selectByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLogCriteria" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    'true' as QUERYID,
-    <include refid="Base_Column_List" />
-    from chg_pay_order_log
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-    <if test="limitStart != null and limitStart&gt;=0">
-      limit #{limitStart} , #{limitEnd}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from chg_pay_order_log
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="Long">
-    delete from chg_pay_order_log
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLogCriteria">
-    delete from chg_pay_order_log
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
-    insert into chg_pay_order_log (order_id, pay_channel, pay_amount, 
-      ord_des, create_time, status, 
-      last_status_date, pay_org_id, pay_org_serial, 
-      check_status, check_time, ACCT_ID, 
-      CUST_ID)
-    values (#{orderId,jdbcType=BIGINT}, #{payChannel,jdbcType=INTEGER}, #{payAmount,jdbcType=BIGINT}, 
-      #{ordDes,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
-      #{lastStatusDate,jdbcType=TIMESTAMP}, #{payOrgId,jdbcType=VARCHAR}, #{payOrgSerial,jdbcType=VARCHAR}, 
-      #{checkStatus,jdbcType=INTEGER}, #{checkTime,jdbcType=TIMESTAMP}, #{acctId,jdbcType=VARCHAR}, 
-      #{custId,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
-    insert into chg_pay_order_log
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
-        order_id,
-      </if>
-      <if test="payChannel != null">
-        pay_channel,
-      </if>
-      <if test="payAmount != null">
-        pay_amount,
-      </if>
-      <if test="ordDes != null">
-        ord_des,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="lastStatusDate != null">
-        last_status_date,
-      </if>
-      <if test="payOrgId != null">
-        pay_org_id,
-      </if>
-      <if test="payOrgSerial != null">
-        pay_org_serial,
-      </if>
-      <if test="checkStatus != null">
-        check_status,
-      </if>
-      <if test="checkTime != null">
-        check_time,
-      </if>
-      <if test="acctId != null">
-        ACCT_ID,
-      </if>
-      <if test="custId != null">
-        CUST_ID,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
-        #{orderId,jdbcType=BIGINT},
-      </if>
-      <if test="payChannel != null">
-        #{payChannel,jdbcType=INTEGER},
-      </if>
-      <if test="payAmount != null">
-        #{payAmount,jdbcType=BIGINT},
-      </if>
-      <if test="ordDes != null">
-        #{ordDes,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="lastStatusDate != null">
-        #{lastStatusDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="payOrgId != null">
-        #{payOrgId,jdbcType=VARCHAR},
-      </if>
-      <if test="payOrgSerial != null">
-        #{payOrgSerial,jdbcType=VARCHAR},
-      </if>
-      <if test="checkStatus != null">
-        #{checkStatus,jdbcType=INTEGER},
-      </if>
-      <if test="checkTime != null">
-        #{checkTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="acctId != null">
-        #{acctId,jdbcType=VARCHAR},
-      </if>
-      <if test="custId != null">
-        #{custId,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLogCriteria" resultType="java.lang.Integer">
-    select count(*) from chg_pay_order_log
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update chg_pay_order_log
-    <set>
-      <if test="record.orderId != null">
-        order_id = #{record.orderId,jdbcType=BIGINT},
-      </if>
-      <if test="record.payChannel != null">
-        pay_channel = #{record.payChannel,jdbcType=INTEGER},
-      </if>
-      <if test="record.payAmount != null">
-        pay_amount = #{record.payAmount,jdbcType=BIGINT},
-      </if>
-      <if test="record.ordDes != null">
-        ord_des = #{record.ordDes,jdbcType=VARCHAR},
-      </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.status != null">
-        status = #{record.status,jdbcType=INTEGER},
-      </if>
-      <if test="record.lastStatusDate != null">
-        last_status_date = #{record.lastStatusDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.payOrgId != null">
-        pay_org_id = #{record.payOrgId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.payOrgSerial != null">
-        pay_org_serial = #{record.payOrgSerial,jdbcType=VARCHAR},
-      </if>
-      <if test="record.checkStatus != null">
-        check_status = #{record.checkStatus,jdbcType=INTEGER},
-      </if>
-      <if test="record.checkTime != null">
-        check_time = #{record.checkTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.acctId != null">
-        ACCT_ID = #{record.acctId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.custId != null">
-        CUST_ID = #{record.custId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update chg_pay_order_log
-    set order_id = #{record.orderId,jdbcType=BIGINT},
-      pay_channel = #{record.payChannel,jdbcType=INTEGER},
-      pay_amount = #{record.payAmount,jdbcType=BIGINT},
-      ord_des = #{record.ordDes,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      status = #{record.status,jdbcType=INTEGER},
-      last_status_date = #{record.lastStatusDate,jdbcType=TIMESTAMP},
-      pay_org_id = #{record.payOrgId,jdbcType=VARCHAR},
-      pay_org_serial = #{record.payOrgSerial,jdbcType=VARCHAR},
-      check_status = #{record.checkStatus,jdbcType=INTEGER},
-      check_time = #{record.checkTime,jdbcType=TIMESTAMP},
-      ACCT_ID = #{record.acctId,jdbcType=VARCHAR},
-      CUST_ID = #{record.custId,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
-    update chg_pay_order_log
-    <set>
-      <if test="payChannel != null">
-        pay_channel = #{payChannel,jdbcType=INTEGER},
-      </if>
-      <if test="payAmount != null">
-        pay_amount = #{payAmount,jdbcType=BIGINT},
-      </if>
-      <if test="ordDes != null">
-        ord_des = #{ordDes,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        status = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="lastStatusDate != null">
-        last_status_date = #{lastStatusDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="payOrgId != null">
-        pay_org_id = #{payOrgId,jdbcType=VARCHAR},
-      </if>
-      <if test="payOrgSerial != null">
-        pay_org_serial = #{payOrgSerial,jdbcType=VARCHAR},
-      </if>
-      <if test="checkStatus != null">
-        check_status = #{checkStatus,jdbcType=INTEGER},
-      </if>
-      <if test="checkTime != null">
-        check_time = #{checkTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="acctId != null">
-        ACCT_ID = #{acctId,jdbcType=VARCHAR},
-      </if>
-      <if test="custId != null">
-        CUST_ID = #{custId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where order_id = #{orderId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog">
+  <update id="updateByPrimaryKey" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog" >
     update chg_pay_order_log
     set pay_channel = #{payChannel,jdbcType=INTEGER},
       pay_amount = #{payAmount,jdbcType=BIGINT},
