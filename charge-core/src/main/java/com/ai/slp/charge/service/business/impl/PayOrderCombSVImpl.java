@@ -47,7 +47,11 @@ public class PayOrderCombSVImpl implements IPayOrderCombSV {
         payOrderLog.setLastStatusDate(now);
         payOrderLog.setPayAmount(payOrderParam.getPayAmount());
         payOrderLog.setPayChannel(payOrderParam.getPayChannel());
-        payOrderLog.setStatus(ChargeCostants.PayOrderLog.Status.INIT);
+        if(payOrderParam.getStatus()==null){
+            payOrderLog.setStatus(payOrderParam.getStatus());
+        }else{
+            payOrderLog.setStatus(ChargeCostants.PayOrderLog.Status.INIT);
+        }
         chgPayOrderSV.savePayOrderLog(payOrderLog);
         return orderId;
     }
