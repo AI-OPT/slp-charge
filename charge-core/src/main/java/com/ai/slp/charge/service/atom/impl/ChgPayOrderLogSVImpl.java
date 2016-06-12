@@ -15,7 +15,7 @@ public class ChgPayOrderLogSVImpl implements IChgPayOrderLogSV {
     }
 
     @Override
-    public ChgPayOrderLog queryChgPayOrderLogByOrderId(long orderId) {
+    public ChgPayOrderLog queryChgPayOrderLogByOrderId(String orderId) {
         return MapperFactory.getChgPayOrderLogMapper().selectByPrimaryKey(orderId);
     }
 

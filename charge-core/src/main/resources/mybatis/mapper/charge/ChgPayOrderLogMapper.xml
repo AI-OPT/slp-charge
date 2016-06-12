@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ai.slp.charge.dao.mapper.interfaces.ChgPayOrderLogMapper" >
   <resultMap id="BaseResultMap" type="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog" >
-    <id column="order_id" property="orderId" jdbcType="BIGINT" />
+    <id column="order_id" property="orderId" jdbcType="VARCHAR" />
     <result column="pay_channel" property="payChannel" jdbcType="INTEGER" />
     <result column="pay_amount" property="payAmount" jdbcType="BIGINT" />
     <result column="ord_des" property="ordDes" jdbcType="VARCHAR" />
@@ -96,15 +96,15 @@
       limit #{limitStart} , #{limitEnd}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="Long" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from chg_pay_order_log
-    where order_id = #{orderId,jdbcType=BIGINT}
+    where order_id = #{orderId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from chg_pay_order_log
-    where order_id = #{orderId,jdbcType=BIGINT}
+    where order_id = #{orderId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLogCriteria" >
     delete from chg_pay_order_log
@@ -118,7 +118,7 @@
       last_status_date, pay_org_id, pay_org_serial, 
       check_status, check_time, ACCT_ID, 
       CUST_ID)
-    values (#{orderId,jdbcType=BIGINT}, #{payChannel,jdbcType=INTEGER}, #{payAmount,jdbcType=BIGINT}, 
+    values (#{orderId,jdbcType=VARCHAR}, #{payChannel,jdbcType=INTEGER}, #{payAmount,jdbcType=BIGINT}, 
       #{ordDes,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
       #{lastStatusDate,jdbcType=TIMESTAMP}, #{payOrgId,jdbcType=VARCHAR}, #{payOrgSerial,jdbcType=VARCHAR}, 
       #{checkStatus,jdbcType=INTEGER}, #{checkTime,jdbcType=TIMESTAMP}, #{acctId,jdbcType=VARCHAR}, 
@@ -169,7 +169,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="orderId != null" >
-        #{orderId,jdbcType=BIGINT},
+        #{orderId,jdbcType=VARCHAR},
       </if>
       <if test="payChannel != null" >
         #{payChannel,jdbcType=INTEGER},
@@ -219,7 +219,7 @@
     update chg_pay_order_log
     <set >
       <if test="record.orderId != null" >
-        order_id = #{record.orderId,jdbcType=BIGINT},
+        order_id = #{record.orderId,jdbcType=VARCHAR},
       </if>
       <if test="record.payChannel != null" >
         pay_channel = #{record.payChannel,jdbcType=INTEGER},
@@ -264,7 +264,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update chg_pay_order_log
-    set order_id = #{record.orderId,jdbcType=BIGINT},
+    set order_id = #{record.orderId,jdbcType=VARCHAR},
       pay_channel = #{record.payChannel,jdbcType=INTEGER},
       pay_amount = #{record.payAmount,jdbcType=BIGINT},
       ord_des = #{record.ordDes,jdbcType=VARCHAR},
@@ -321,7 +321,7 @@
         CUST_ID = #{custId,jdbcType=VARCHAR},
       </if>
     </set>
-    where order_id = #{orderId,jdbcType=BIGINT}
+    where order_id = #{orderId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ai.slp.charge.dao.mapper.bo.ChgPayOrderLog" >
     update chg_pay_order_log
@@ -337,6 +337,6 @@
       check_time = #{checkTime,jdbcType=TIMESTAMP},
       ACCT_ID = #{acctId,jdbcType=VARCHAR},
       CUST_ID = #{custId,jdbcType=VARCHAR}
-    where order_id = #{orderId,jdbcType=BIGINT}
+    where order_id = #{orderId,jdbcType=VARCHAR}
   </update>
 </mapper>

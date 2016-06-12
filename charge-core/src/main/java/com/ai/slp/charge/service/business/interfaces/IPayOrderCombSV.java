@@ -24,7 +24,7 @@ public interface IPayOrderCombSV {
      * @author LiangMeng
      * @ApiDocMethod
      */
-    long createPayOrder(PayOrderParam payOrderParam) throws BusinessException,SystemException;
+    String createPayOrder(PayOrderParam payOrderParam) throws BusinessException,SystemException;
     /**
      * 修改缴费订单
      * @param payOrderParam
@@ -34,7 +34,7 @@ public interface IPayOrderCombSV {
      * @author LiangMeng
      * @ApiDocMethod
      */
-    long updatePayOrder(PayOrderParam payOrderParam) throws BusinessException,SystemException;
+    String updatePayOrder(PayOrderParam payOrderParam) throws BusinessException,SystemException;
     /**
      * 缴费订单回调
      * @param payOrderParam
@@ -45,7 +45,7 @@ public interface IPayOrderCombSV {
      * @author LiangMeng
      * @ApiDocMethod
      */
-    long callPayOrder(PayOrderParam payOrderParam ,PaymentParam paymentParam) throws BusinessException,SystemException;
+    String callPayOrder(PayOrderParam payOrderParam ,PaymentParam paymentParam) throws BusinessException,SystemException;
 
     
 }

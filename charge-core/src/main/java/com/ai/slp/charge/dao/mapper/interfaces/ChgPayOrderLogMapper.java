@@ -10,7 +10,7 @@ public interface ChgPayOrderLogMapper {
 
     int deleteByExample(ChgPayOrderLogCriteria example);
 
-    int deleteByPrimaryKey(Long orderId);
+    int deleteByPrimaryKey(String orderId);
 
     int insert(ChgPayOrderLog record);
 
@@ -18,7 +18,7 @@ public interface ChgPayOrderLogMapper {
 
     List<ChgPayOrderLog> selectByExample(ChgPayOrderLogCriteria example);
 
-    ChgPayOrderLog selectByPrimaryKey(Long orderId);
+    ChgPayOrderLog selectByPrimaryKey(String orderId);
 
     int updateByExampleSelective(@Param("record") ChgPayOrderLog record, @Param("example") ChgPayOrderLogCriteria example);
 

@@ -13,7 +13,7 @@ public interface IChgPayOrderLogSV {
 
     void savePayOrderLog(ChgPayOrderLog log);   
     
-    ChgPayOrderLog queryChgPayOrderLogByOrderId(long orderId);
+    ChgPayOrderLog queryChgPayOrderLogByOrderId(String orderId);
 
     void updatePayOrderLog(ChgPayOrderLog log);
 }

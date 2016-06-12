@@ -12,7 +12,7 @@ public class PayOrderParam  extends BaseInfo {
     private static final long serialVersionUID = -6717627733377889320L;
 
     
-    private Long orderId;
+    private String orderId;
 
     private Integer payChannel;
 
@@ -30,11 +30,13 @@ public class PayOrderParam  extends BaseInfo {
 
     private String custId;
 
-    public Long getOrderId() {
+    
+
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Long orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 

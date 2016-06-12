@@ -1,5 +1,8 @@
 package com.ai.slp.charge.util;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import com.ai.opt.sdk.components.sequence.util.SeqUtil;
 
 /**
@@ -50,7 +53,16 @@ public final class ChargeSeqUtil {
      * @author LiangMeng
      * @ApiDocMethod
      */
-    public static Long createPayOrderId() {
-        return SeqUtil.getNewId("PAY_ORDER_LOG$ORDER_ID$SEQ");
+    public static String createPayOrderId() {
+        String nowTime = new SimpleDateFormat("yyMMddhhmmss").format(new Date());
+        String seq = SeqUtil.getNewId("PAY_ORDER_LOG$ORDER_ID$SEQ")+"";     
+        System.out.println("(15-(seq.length())):"+(15-(seq.length())));
+        int lenth = seq.length();
+        for(int i=0;i<(10-lenth);i++){
+            seq = "0"+seq;
+            System.out.println("seq_"+i+":"+seq);
+        }
+        seq = nowTime + seq;
+        return seq;
     }
 }

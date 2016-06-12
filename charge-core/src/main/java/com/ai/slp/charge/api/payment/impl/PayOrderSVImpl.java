@@ -24,7 +24,7 @@ public class PayOrderSVImpl implements IPayOrderSV {
     private IPayOrderCombSV payOrderCombSV;
     
     @Override
-    public long createPayOrder(PayOrderParam payOrderParam) throws BusinessException,
+    public String createPayOrder(PayOrderParam payOrderParam) throws BusinessException,
             SystemException {
         LOG.info("创建缴费订单开始"); 
         if (payOrderParam == null) {
@@ -48,14 +48,14 @@ public class PayOrderSVImpl implements IPayOrderSV {
     }
 
     @Override
-    public long updatePayOrder(PayOrderParam payOrderParam) throws BusinessException,
+    public String updatePayOrder(PayOrderParam payOrderParam) throws BusinessException,
             SystemException {
         LOG.info("修改缴费订单状态");
         if (payOrderParam == null) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:缴费订单记录创建入参不能为空");
         }
 
-        if (payOrderParam.getOrderId()==0) {
+        if (StringUtil.isBlank(payOrderParam.getOrderId())) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:订单号（业务流水号）不能为空");
         }
         
@@ -66,14 +66,14 @@ public class PayOrderSVImpl implements IPayOrderSV {
     }
 
     @Override
-    public long callPayOrder(PayOrderParam payOrderParam, PaymentParam paymentParam)
+    public String callPayOrder(PayOrderParam payOrderParam, PaymentParam paymentParam)
             throws BusinessException, SystemException {
         LOG.info("缴费订单回调");
         if (payOrderParam == null) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:缴费订单记录创建入参不能为空");
         }
 
-        if (payOrderParam.getOrderId()==0) {
+        if (StringUtil.isBlank(payOrderParam.getOrderId())) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:订单号不能为空");
         }
         if (payOrderParam.getStatus()==0) {

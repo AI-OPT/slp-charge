@@ -3,7 +3,7 @@ package com.ai.slp.charge.dao.mapper.bo;
 import java.sql.Timestamp;
 
 public class ChgPayOrderLog {
-    private Long orderId;
+    private String orderId;
 
     private Integer payChannel;
 
@@ -29,12 +29,12 @@ public class ChgPayOrderLog {
 
     private String custId;
 
-    public Long getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId == null ? null : orderId.trim();
     }
 
     public Integer getPayChannel() {

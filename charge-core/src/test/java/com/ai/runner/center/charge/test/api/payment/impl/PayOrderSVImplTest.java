@@ -75,7 +75,7 @@ public class PayOrderSVImplTest {
        param.setPayAmount(100l);
        param.setPayChannel(4);
        param.setTenantId("BLB");
-       long orderId = payOrderSV.createPayOrder(param);
+       String orderId = payOrderSV.createPayOrder(param);
        assertNotEquals(0, orderId);
        LOG.info("返回的收费流水号：" + orderId);
     }
@@ -89,12 +89,12 @@ public class PayOrderSVImplTest {
     @Test
     public void testPayOrderUpdateCase1() {
        PayOrderParam param = new PayOrderParam();
-       param.setOrderId(201l);
+       param.setOrderId("201");
        param.setOrdDes("测试订单");
        param.setPayOrgId("ZFB");
        param.setPayOrgSerial("10101010");
        param.setStatus(4);
-       long orderId = payOrderSV.updatePayOrder(param);
+       String orderId = payOrderSV.updatePayOrder(param);
        assertNotEquals(0, orderId);
        LOG.info("返回的收费流水号：" + orderId);
     }
@@ -102,7 +102,7 @@ public class PayOrderSVImplTest {
     @Test
     public void testPayOrderCallCase1() {
        PayOrderParam param = new PayOrderParam();
-       param.setOrderId(201l);
+       param.setOrderId(201l+"");
        param.setPayOrgId("weixin");
        param.setPayOrgSerial("10101010");
        param.setStatus(2);
@@ -142,7 +142,7 @@ public class PayOrderSVImplTest {
        paymentParam.setChargeDetail(chargeDetails);
        paymentParam.setPayTypeDetail(payTypeDetails);
        
-       long orderId = payOrderSV.callPayOrder(param, paymentParam);
+       String orderId = payOrderSV.callPayOrder(param, paymentParam);
        LOG.info("返回的收费流水号：" + orderId);
     }
 }

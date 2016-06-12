@@ -34,11 +34,11 @@ public class PayOrderCombSVImpl implements IPayOrderCombSV {
     private IChgPayOrderLogSV chgPayOrderSV; 
     
     @Override
-    public long createPayOrder(PayOrderParam payOrderParam) throws BusinessException,
+    public String createPayOrder(PayOrderParam payOrderParam) throws BusinessException,
             SystemException {
         ChgPayOrderLog payOrderLog = new ChgPayOrderLog();
         Timestamp now = new Timestamp(System.currentTimeMillis());
-        Long orderId = ChargeSeqUtil.createPayOrderId();
+        String orderId = ChargeSeqUtil.createPayOrderId();
         payOrderLog.setOrderId(orderId);
         payOrderLog.setAcctId(payOrderParam.getAcctId());
         payOrderLog.setCheckStatus(ChargeCostants.PayOrderLog.CheckStatus.INIT);
@@ -57,7 +57,7 @@ public class PayOrderCombSVImpl implements IPayOrderCombSV {
     }
 
     @Override
-    public long updatePayOrder(PayOrderParam payOrderParam) throws BusinessException,
+    public String updatePayOrder(PayOrderParam payOrderParam) throws BusinessException,
             SystemException {
         ChgPayOrderLog payOrderLog = chgPayOrderSV.queryChgPayOrderLogByOrderId(payOrderParam.getOrderId());
         Timestamp now = new Timestamp(System.currentTimeMillis());
@@ -70,7 +70,7 @@ public class PayOrderCombSVImpl implements IPayOrderCombSV {
     }
 
     @Override
-    public long callPayOrder(PayOrderParam payOrderParam, PaymentParam paymentParam)
+    public String callPayOrder(PayOrderParam payOrderParam, PaymentParam paymentParam)
             throws BusinessException, SystemException {
         ChgPayOrderLog payOrderLog =  chgPayOrderSV.queryChgPayOrderLogByOrderId(payOrderParam.getOrderId());
         Timestamp now = new Timestamp(System.currentTimeMillis());
@@ -81,7 +81,7 @@ public class PayOrderCombSVImpl implements IPayOrderCombSV {
         chgPayOrderSV.updatePayOrderLog(payOrderLog);
         
         paymentManagerSV.payment(paymentParam);
-        return 0;
+        return "0";
     }
 
     
