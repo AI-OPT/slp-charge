@@ -52,7 +52,7 @@ public class ChgChargeLogSVImpl implements IChgChargeLogSV {
         PageInfo<ChgChargeLog> pageInfo = new PageInfo<ChgChargeLog>();
         ChgChargeLogMapper chgChargeLogMapper = MapperFactory.getChgChargeLogMapper();
         pageInfo.setCount(chgChargeLogMapper.countByExample(sql));
-        sql.setLimitStart(param.getPageInfo().getStartRowIndex() - 1);
+        sql.setLimitStart(param.getPageInfo().getStartRowIndex() );
         sql.setLimitEnd(param.getPageInfo().getPageSize());
         pageInfo.setResult(chgChargeLogMapper.selectByExample(sql));
         pageInfo.setPageNo(param.getPageInfo().getPageNo());
@@ -79,7 +79,7 @@ public class ChgChargeLogSVImpl implements IChgChargeLogSV {
         PageInfo<ChgChargeLog> pageInfo = new PageInfo<ChgChargeLog>();
         ChgChargeLogMapper chgChargeLogMapper = MapperFactory.getChgChargeLogMapper();
         pageInfo.setCount(chgChargeLogMapper.countByExample(sql));
-        sql.setLimitStart(param.getPageInfo().getStartRowIndex() - 1);
+        sql.setLimitStart(param.getPageInfo().getStartRowIndex() );
         sql.setLimitEnd(param.getPageInfo().getPageSize());
         pageInfo.setResult(chgChargeLogMapper.selectByExample(sql));
         pageInfo.setPageNo(param.getPageInfo().getPageNo());
