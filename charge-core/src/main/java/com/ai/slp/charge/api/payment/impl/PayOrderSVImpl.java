@@ -118,4 +118,12 @@ public class PayOrderSVImpl implements IPayOrderSV {
         return payOrderCombSV.callPayOrder(payOrderParam, paymentParam);
     }
 
+    @Override
+    public PayOrderParam queryPayOrder(String orderId) throws BusinessException, SystemException {
+        if(StringUtil.isBlank(orderId)) {
+            throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:orderID不能为空");
+        }
+        return payOrderCombSV.queryPayOrder(orderId);
+    }
+
 }

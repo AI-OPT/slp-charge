@@ -45,5 +45,15 @@ public interface IPayOrderSV {
      */
     String callPayOrder(PayOrderParam payOrderParam ,PaymentParam paymentParam) throws BusinessException,SystemException;
 
+    /**
+     * 
+     * @param orderId
+     * @return
+     * @throws BusinessException
+     * @throws SystemException
+     * @author LiangMeng
+     * @ApiDocMethod
+     */
+    PayOrderParam queryPayOrder(String orderId) throws BusinessException,SystemException;
 }
 

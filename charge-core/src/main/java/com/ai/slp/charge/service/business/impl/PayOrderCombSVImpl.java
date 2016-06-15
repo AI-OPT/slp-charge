@@ -84,6 +84,24 @@ public class PayOrderCombSVImpl implements IPayOrderCombSV {
         return "0";
     }
 
-    
+    @Override
+    public PayOrderParam queryPayOrder(String orderId) throws BusinessException, SystemException {
+        ChgPayOrderLog payOrderLog = chgPayOrderSV.queryChgPayOrderLogByOrderId(orderId);
+        return this.conversLogToParam(payOrderLog);
+    }
+
+    private PayOrderParam conversLogToParam(ChgPayOrderLog payOrderLog){
+        PayOrderParam payOrderParam = new PayOrderParam();
+        payOrderParam.setAcctId(payOrderLog.getAcctId());
+        payOrderParam.setCustId(payOrderLog.getCustId());
+        payOrderParam.setOrdDes(payOrderLog.getOrdDes());
+        payOrderParam.setOrderId(payOrderLog.getOrderId());
+        payOrderParam.setPayAmount(payOrderLog.getPayAmount());
+        payOrderParam.setPayChannel(payOrderLog.getPayChannel());
+        payOrderParam.setPayOrgId(payOrderLog.getPayOrgId());
+        payOrderParam.setPayOrgSerial(payOrderLog.getPayOrgSerial());
+        payOrderParam.setStatus(payOrderLog.getStatus());
+        return payOrderParam;
+    }
 
 }

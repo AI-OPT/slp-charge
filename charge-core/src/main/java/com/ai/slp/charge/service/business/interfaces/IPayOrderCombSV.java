@@ -47,5 +47,5 @@ public interface IPayOrderCombSV {
      */
     String callPayOrder(PayOrderParam payOrderParam ,PaymentParam paymentParam) throws BusinessException,SystemException;
 
-    
+    PayOrderParam queryPayOrder(String orderId) throws BusinessException,SystemException;
 }
