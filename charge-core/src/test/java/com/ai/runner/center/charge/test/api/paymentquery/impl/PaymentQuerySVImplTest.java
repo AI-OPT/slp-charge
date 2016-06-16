@@ -187,8 +187,8 @@ public class PaymentQuerySVImplTest {
     @Test
     public void testQueryChargeBaseInfoByAcctIdCase1() {
         ChargeInfoQueryByAcctIdParam param = new ChargeInfoQueryByAcctIdParam();
-        param.setTenantId("BIS-ST");
-        param.setAccountId(103);
+        param.setTenantId("SLP");
+        param.setAccountId(11211);
         //param.setStartTime(DateUtil.getTimestamp("2015-12-04", DateUtil.DATE_FORMAT));
         //param.setEndTime(DateUtil.getTimestamp("2015-12-05", DateUtil.DATE_FORMAT));
         PageInfo<ChargeBaseInfo> pageInfo = new PageInfo<ChargeBaseInfo>();
