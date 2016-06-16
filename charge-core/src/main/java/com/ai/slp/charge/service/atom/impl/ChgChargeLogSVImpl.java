@@ -81,6 +81,7 @@ public class ChgChargeLogSVImpl implements IChgChargeLogSV {
         pageInfo.setCount(chgChargeLogMapper.countByExample(sql));
         sql.setLimitStart(param.getPageInfo().getStartRowIndex() );
         sql.setLimitEnd(param.getPageInfo().getPageSize());
+        sql.setOrderByClause("create_time desc");
         pageInfo.setResult(chgChargeLogMapper.selectByExample(sql));
         pageInfo.setPageNo(param.getPageInfo().getPageNo());
         pageInfo.setPageSize(param.getPageInfo().getPageSize());
