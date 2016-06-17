@@ -210,11 +210,7 @@ public class PaymentManagerSVImpl implements IPaymentManagerSV {
         if (!ChargeCostants.ChgChargeLog.BusiType.ORDER_CHARGE.equals(busiType)
                 && !ChargeCostants.ChgChargeLog.BusiType.ACCOUNT_CHARGE.equals(busiType)) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_WRONG, "传入的业务操作类型有误");
-        }        
-        
-        if(ChargeCostants.ChgChargeLog.BusiType.ORDER_CHARGE.equals(busiType) && param.getCustId() == 0l) {
-            throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "订单收费类客户ID不能为空");
-        } 
+        }  
         
         if(param.getAcctId() == 0l) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "账户ID不能为空");
