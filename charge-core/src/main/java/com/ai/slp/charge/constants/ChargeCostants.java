@@ -288,7 +288,7 @@ public final class ChargeCostants {
     	private PayTypeDetail(){
     		
     	}
-    	public static final int PAY_STYLE_DEFAULT = 0;
+    	public static final int PAY_STYLE_DEFAULT = 25;
     }
     
     public static final class ChargeDetail{
