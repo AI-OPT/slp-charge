@@ -12,7 +12,19 @@ public final class ChargeCostants {
     private ChargeCostants() {
         
     }
+    public static final String BUSI_OPER_CODE = "1";
+    public static final String OPER_ID = "123456";
     
+    /**
+	 * 订单支付MDS所有topic信息
+	 *
+	 * Date: 2016年6月21日 <br>
+	 * Copyright (c) 2016 asiainfo.com <br>
+	 * @author zhangzd
+	 */
+	public static final class OrdOrder {
+		public static final String SLP_CHARGE_TOPIC = "slpChargeTopic";
+	}
     /**
      * 收费流水记录表
      * Date: 2015年8月13日 <br>
@@ -272,4 +284,17 @@ public final class ChargeCostants {
         public static final int TERMINAL_FEE = 4;
     }
     
+    public static final class PayTypeDetail{
+    	private PayTypeDetail(){
+    		
+    	}
+    	public static final int PAY_STYLE_DEFAULT = 0;
+    }
+    
+    public static final class ChargeDetail{
+    	private ChargeDetail (){
+    		
+    	}
+    	public static final String FEE_TYPE_BUSI = "1";
+    }
 }
