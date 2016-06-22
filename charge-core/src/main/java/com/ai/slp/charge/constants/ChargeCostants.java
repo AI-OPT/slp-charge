@@ -13,7 +13,7 @@ public final class ChargeCostants {
         
     }
     public static final String BUSI_OPER_CODE = "1";
-    public static final String OPER_ID = "123456";
+    public static final String OPER_ID = "SLP";
     
     /**
 	 * 订单支付MDS所有topic信息
