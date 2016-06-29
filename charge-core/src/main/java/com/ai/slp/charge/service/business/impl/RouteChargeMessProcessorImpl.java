@@ -35,7 +35,7 @@ public class RouteChargeMessProcessorImpl implements IMessageProcessor {
     }
     @Override
     public void process(MessageAndMetadata message) throws Exception {
-        logger.info("开始处理支付消息.........");
+        logger.info("开始处理(支付/充值)消息  busiType 1:支付;2:充值.........");
         if (null == message)
             return;
         String content = new String(message.getMessage(), "UTF-8");
@@ -47,7 +47,9 @@ public class RouteChargeMessProcessorImpl implements IMessageProcessor {
         String tenantId = deductVo.getTenantId();
         long acctId = deductVo.getAccountId();
         String orderId = deductVo.getExternalId();
-        String busiType = ChargeCostants.ChgChargeLog.BusiType.ORDER_CHARGE;
+        String busiType = deductVo.getBusiType();//ChargeCostants.ChgChargeLog.BusiType.ORDER_CHARGE;
+        //输出当前业务类型信息
+        logger.info("busiType--->:"+busiType);
         long totalFee = deductVo.getTotalAmount();
         List<TransSummaryVo> transSummaryVoList = deductVo.getTransSummary();
         String feeItemId = null;

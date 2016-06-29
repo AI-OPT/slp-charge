@@ -54,8 +54,20 @@ public class DeductVo extends BaseVo {
      * 用户ID
      */
     private long subsId;
-
     /**
+     * 业务类型 1：支付 2：充值
+     */
+    private String busiType;
+
+    public String getBusiType() {
+		return busiType;
+	}
+
+	public void setBusiType(String busiType) {
+		this.busiType = busiType;
+	}
+
+	/**
      * 增加资金类型
      */
     public void addFundType(String fundType) {
