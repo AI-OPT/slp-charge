@@ -47,7 +47,7 @@ subprojects {
         }
     }
 	
-	dependencies { compile "com.ai.opt:opt-base:1.0-SNAPSHOT" }
+	dependencies { compile "com.ai.opt:opt-base:1.0.1-SNAPSHOT" }
 }
 
 project("charge-api") {
